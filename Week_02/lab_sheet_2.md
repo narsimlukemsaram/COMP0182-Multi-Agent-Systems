@@ -38,7 +38,7 @@ mamba activate turtle_bot_env # or if it does not work try conda activate turtle
 
 Then the environment will change from `base` to `turtle_bot_env`.
 
-![image.png](COMP0182%20Lab%20sheet%202%20117a981a2de680998d1bc94c157ed27a/image.png)
+![image.png](imgs/image.png)
 
 ### Task 2: Unit test in pybullet
 

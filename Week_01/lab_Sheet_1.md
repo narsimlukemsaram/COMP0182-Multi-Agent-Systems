@@ -36,7 +36,7 @@ Adapted from:
 - Right click the last available partition and select ***Shrink volume***, shrink at least 25 GB
 - An unallocated partition will come up once it is shrunk successfully
 
-![Untitled](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/Untitled.png)
+![Untitled](imgs/Untitled.png)
 
 4. Download ***Ubuntu 20.04*** from the official website, select ***Desktop image***
 
@@ -46,7 +46,7 @@ Adapted from:
 
 [Rufus - Create bootable USB drives the easy way](https://rufus.ie/en/)
 
-![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image.png)
+![image.png](imgs/image.png)
 
 For most if you, choose the standard one with platform Windows x64.
 
@@ -57,7 +57,7 @@ For most if you, choose the standard one with platform Windows x64.
 - Leave everything default, click ***SELECT*** option and select the ISO image file just downloaded.
 - Click ***START*** and follow the steps
 
-![Untitled](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/Untitled%201.png)
+![Untitled](imgs/Untitled%201.png)
 
 7. Install Ubuntu dual boot
 - Restart the computer. Press F11 (the button might be different for different computer brand, search for how to enter the ***Boot Menu*** for yours)
@@ -68,15 +68,15 @@ For most if you, choose the standard one with platform Windows x64.
 - In ***Installation type*** tab, it is recommended to select ***Something else*** and continue
 - In the next tab, you should see the disk info of your Windows system and the free space just created. Then select the free space and click on the ‘**+**’ button. Create a root partition (’**/**’) and allocate (recommended) 25 GB space for it, make sure you tick the same option as shown in the following figure
 
-![Untitled](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/Untitled%202.png)
+![Untitled](imgs/Untitled%202.png)
 
 - Use the remaining free space to create a ***swap*** partition. It is recommended to allocate at least 4 GB for it
 
-![Untitled](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/Untitled%203.png)
+![Untitled](imgs/Untitled%203.png)
 
 - Lastly, still in the installation type tab, change the device for boot loader installation to the same device as your root partition. After all, click ***Install Now*** and follow the instructions on your screen
 
-![Untitled](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/Untitled%204.png)
+![Untitled](imgs/Untitled%204.png)
 
 After restarting your computer, the Ubuntu dual boot will be installed successfully
 
@@ -94,7 +94,7 @@ Go to the website:
 https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html
 Scroll down and click “VMware Fusion Pro Download”
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%201.png)
+    ![image.png](imgs/image%201.png)
     
     You might be asked for creating an account, then just do it and follow the instructions.
     
@@ -104,21 +104,21 @@ Similar as dual boot, you need to download an image file from the official websi
 Normally, we prefer to download the desktop image which can give us the GUI desktop directly after installation. Unfortunately, the desktop image for ARM64 is no more released currently. But we can still install the server image first, and install the GUI desktop manually.
 3. Open thn virtual machine platform, in this case VMware gives:
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%202.png)
+    ![image.png](imgs/image%202.png)
     
     Simply drag the .iso file you just download here. Follow the instructions, there is no setting you need to change (you can if you want).
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%203.png)
+    ![image.png](imgs/image%203.png)
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%204.png)
+    ![image.png](imgs/image%204.png)
     
 4. Finish the installation setup
 There are not too many things to change from default in this step, if you want a quicker setup, just skip everything and select `Continue` or `Done` at each step.
 
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%205.png)
+    ![image.png](imgs/image%205.png)
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%206.png)
+    ![image.png](imgs/image%206.png)
     
     **Suggested optimisation on partition:**
     
@@ -126,17 +126,17 @@ There are not too many things to change from default in this step, if you want a
     - **Reduce EFI Partition Size:** Consider reducing `/boot/efi` to around 300 MB to free up some space.
     - **Increase the Root (`/`) Size:** If you plan to use this virtual machine for more than basic tasks, use all the rest space to increase the root partition.
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%207.png)
+    ![image.png](imgs/image%207.png)
     
 5. Finish the setup
 After a few minutes, you will see `install complete` on the top left corner, and the system will turns to an update stage. Normally, this update stage will spend quite a long time. You can skip it by select `Cancel update and reboot`. 
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%208.png)
+    ![image.png](imgs/image%208.png)
     
 6. Install GUI
 After reboot, you will be lead to the Ubuntu Server terminal, as we need to use simulation for further work, a GUI desktop is necessary. First, type the username and password you just set to login and you will be free to use it.
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%209.png)
+    ![image.png](imgs/image%209.png)
     
     To install the GUI, run the following command in the terminal.
     
@@ -156,9 +156,9 @@ After reboot, you will be lead to the Ubuntu Server terminal, as we need to use 
 If the platform is still using the image(CD) file to start the virtual machine, you will be lead to install the operation system every time you reboot it. To avoid this:
     - Go to the setting menu of the virtual machine, and check the boot order in startup tab.
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%2010.png)
+    ![image.png](imgs/image%2010.png)
     
-    ![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%2011.png)
+    ![image.png](imgs/image%2011.png)
     
     - Select the `Hard Disk` to start up the virtual machine.
     - Run `sudo reboot` in terminal to see if it works.
@@ -240,7 +240,7 @@ Reference:
     https://code.visualstudio.com/download
     Make sure you select the correct format of it. For Ubuntu OS, we need `.deb` file, and then select `x64` or `Arm64` based on your machine’s architecture
 
-![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%2012.png)
+![image.png](imgs/image%2012.png)
 
 - Then in terminal, use `cd` command to direct to the folder where you download the package to, and use the following command to install it.
     
@@ -249,7 +249,7 @@ Reference:
     ```
     
 
-![image.png](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/image%2013.png)
+![image.png](imgs/image%2013.png)
 
 2. (Optional) Git
 Normally, Git should have been installed to your Ubuntu system, run `git` to see if it is installed. If not, use the following command to install it.
@@ -270,16 +270,16 @@ Normally, Git should have been installed to your Ubuntu system, run `git` to see
     (Optional) Enter the Recover key to unlock it
     In case you do not want to turn BitLocker off or the problem has been encountered, follow the instructions to find your recovery key. For example, login the same Microsoft account as your computer’s on the page https://account.microsoft.com/devices/recoverykey. And in the ***Device*** tab, you will find your recover key
 
-    ![Untitled](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/Untitled%205.png)
+    ![Untitled](imgs/Untitled%205.png)
 
-    ![Untitled](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/Untitled%206.png)
+    ![Untitled](imgs/Untitled%206.png)
 
 
 
 2. Default boot
 After dual boot is installed, the GRUB (GRand Unified Bootloader) will ask you the system you would like to boot and the default boot system will be Ubuntu. If you want to change the default selection to Windows, use the following instructions to modify the configuration file of GRUB
     
-    ![Untitled](COMP0182%20Lab%20Sheet%201%20117a981a2de68030a08bd1eb2a37ef92/Untitled%207.png)
+    ![Untitled](imgs/Untitled%207.png)
     
     - Open the terminal in Ubuntu
     - run following command
