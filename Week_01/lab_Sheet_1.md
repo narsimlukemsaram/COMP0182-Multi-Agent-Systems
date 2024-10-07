@@ -10,11 +10,11 @@ For online version for this file, please visit: [https://brick-slouch-eb1.notion
 
 ## Options for different computer:
 
-- Option 1: [Install Ubuntu 20.04 Dual Boot with Windows 11 (Highly Recommended)](#task-1-1-dual-boot-setup-tested-on-windows-machine)
+- **Option 1**: [Install Ubuntu 20.04 Dual Boot with Windows 11 (**Highly Recommended**)](#task-1-1-dual-boot-setup-tested-on-windows-machine)
  
-- Option 2: [Install Virtual Machine on macOS](#task-1-2-ubuntu-virtual-machine-on-macos)
+- **Option 2**: [Install Virtual Machine on macOS (**Highly Recommended**)](#task-1-2-ubuntu-virtual-machine-on-macos) 
  
-- Option 3: [Install RoboStack on Windows 11 and macOS (Optional)](#task-1-3-optional-install-robostack)
+- **Option 3**: [Install RoboStack on Windows 11 and macOS with Virtual Machine (Optional)](#task-1-3-optional-install-robostack)
 
 ### Option 1: Install Ubuntu 20.04 Dual Boot with Windows 11
 
