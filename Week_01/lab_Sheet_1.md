@@ -8,6 +8,14 @@ For online version for this file, please visit: [https://brick-slouch-eb1.notion
 
 ***Please read* the 1st & 2nd part: BitLocker & Disable Secure Boot, in Problem encountered (at the end of the file)** ***before you start your installation*** 
 
+## Options for different computer:
+
+- Option 1: [Install Ubuntu 20.04 Dual Boot with Windows 11 (High Recommended)](#task-1-1-dual-boot-setup-tested-on-windows-machine)
+ 
+- Option 2: [Install Virtual Machine on macOS](#task-1-2-ubuntu-virtual-machine-on-macos)
+ 
+- Option 3: [Install RoboStack on Windows 11 and macOS (Optional)](#task-1-3-optional-install-robostack)
+
 ### Task 1-1: Dual boot setup (Tested on Windows machine)
 
 Adapted from:
@@ -162,6 +170,44 @@ If the platform is still using the image(CD) file to start the virtual machine, 
     
     - Select the `Hard Disk` to start up the virtual machine.
     - Run `sudo reboot` in terminal to see if it works.
+
+### Task 1-3: (Optional) Install RoboStack
+
+For some of you studying COMP0245, you should already have RoboStack installed on your computer. This is an alternative platform to Ubuntu virtual machine or dual boot. We strongly recommend you to use Ubuntu since it is more stable for ROS and Pybullet. But you can still try RoboStack since it is convenient, light and easy to install. For some parts of the script or software using in this module, there might be problems with RoboStack. If you meet some problems on happen on RoboStack and manage to fix it, please share it on moodle so that more people can use it.
+
+1. Install conda on MacOS
+    
+    To get started with conda (or mamba) as package managers, you need to have a base conda installation. Please do *not* use the Anaconda installer, but rather start with [`miniforge`](https://github.com/conda-forge/miniforge) that is much more "minimal" installer. This installer will create a "base" environment that contains the package managers conda and mamba. After this installation is done, you can move on to the next steps.
+    
+    Download the installer using curl or wget or your favourite program and run the script.
+    
+    ```bash
+    curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+    bash Miniforge3-$(uname)-$(uname -m).sh
+    ```
+    
+    run `conda` or `mamba` to see if it is installed successfully.
+    
+2. Setting up the environment
+    - Clone the `Multi-agent-system` repository
+        
+        ```bash
+        git clone https://github.com/VModugno/Multi_agent_system.git
+        ```
+        
+3. Install the Conda Environment:
+    
+    The environment_multi_agent_sys.yaml file includes all the dependencies required. To create the environment, run the below commands.
+    
+
+```bash
+mamba env create -f environment_multi_agent_sys.yaml
+mamba activate turtle_bot_env # or if it does not work try conda activate turtle_bot_env
+```
+
+Then the environment will change from `base` to `turtle_bot_env`.
+
+![image.png](imgs/terminal.png)
 
 ### Task 2: Install ROS Noetic
 
