@@ -391,12 +391,3 @@ In case you want more space in your laptop, check this tutorial for more informa
     
     [How to Dual Boot Windows 10 and Ubuntu – Linux Dual Booting Tutorial](https://www.freecodecamp.org/news/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial/)
     
-
-TODO:
-
-- [x]  secure boot disabled
-- [x]  macos vm
-- [x]  masos robostack?
-- [ ]  windows with robostack
-- [ ]  menu for different options
-- [ ]  move secure boot part up
