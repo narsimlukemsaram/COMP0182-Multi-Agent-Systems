@@ -276,7 +276,7 @@ https://medium.com/@createwithabd/ros-noetic-installation-guide-on-ubuntu-20-04-
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Task 3 Install VS Code and Git
+## Task 3: Install VS Code and Git
 
 **1. Install VS Code**:
     - You can directly download the package to install Visual Studio Code from the official website: https://code.visualstudio.com/download
