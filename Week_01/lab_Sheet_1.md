@@ -8,11 +8,11 @@ For this course, everyone **must** use **Ubuntu 20.04**. The best way to set up 
 
 ## Options for different computers (Windows/macOS):
 
-- **Option 1**: [Install Ubuntu 20.04 Dual Boot with Windows 11 (**_Highly Recommended_**)](#task-1-1-dual-boot-setup-tested-on-windows-machine)
+- **Option 1**: [Install Ubuntu 20.04 Dual Boot with Windows 11 (**_Highly Recommended_**)](#option-1-install-ubuntu-2004-dual-boot-with-windows-11-highly-recommended)
  
-- **Option 2**: [Install Virtual Machine on macOS (**_Highly Recommended_**)](#task-1-2-ubuntu-virtual-machine-on-macos) 
+- **Option 2**: [Install Virtual Machine on macOS (**_Highly Recommended_**)](#option-2-install-virtual-machine-on-macos-highly-recommended) 
  
-- **Option 3**: [Install RoboStack on Windows 11 or macOS with Virtual Machine (**_Optional_**)](#task-1-3-optional-install-robostack)
+- **Option 3**: [Install RoboStack on Windows 11 or macOS with Virtual Machine (**_Optional_**)](#option-3-install-robostack-on-windows-11-or-macos-with-virtual-machine-optional)
 
 ### Option 1: Install Ubuntu 20.04 Dual Boot with Windows 11 (**_Highly Recommended_**)
 
