@@ -7,24 +7,23 @@
 Same as shown in the TurtleBot3 Tutorial slide, try to do the unit test as below:
 
 1. Clone the repository
-    
-    ```bash
     Go to your home directory and clone the PyBullet simulation code using the web URL:
-    Ubuntu@Ubuntu:~# git clone https://github.com/JacksonChiy/turtlebot_simulation_pybullet
+    ```bash
+    Git clone https://github.com/JacksonChiy/turtlebot_simulation_pybullet
     ```
     
 2. Setup the environment
     
     ```bash
 
-    Go to the PyBullet directory:
-    Ubuntu@Ubuntu:~# cd turtlebot_simulation_pybullet
+    # Go to the PyBullet directory:
+    cd turtlebot_simulation_pybullet
 
-    Install PyBullet:
-    Ubuntu@Ubuntu:~/turtlebot_simulation_pybullet# pip3 install pybullet
+    # Install PyBullet:
+    pip3 install pybullet
     
-    Install necessary dependencies: 
-    Ubuntu@Ubuntu:~/turtlebot_simulation_pybullet# python3 -m pip install -r requirement.txt
+    #Install necessary dependencies: 
+    python3 -m pip install -r requirement.txt
     
     ```
     
@@ -32,7 +31,7 @@ Same as shown in the TurtleBot3 Tutorial slide, try to do the unit test as below
     
     ```bash
 
-    Ubuntu@Ubuntu:~/turtlebot_simulation_pybullet# python3 single_bot_motion_control.py
+    ~/turtlebot_simulation_pybullet# python3 single_bot_motion_control.py
     
     ```
     
@@ -46,7 +45,7 @@ Same as shown in the TurtleBot3 Tutorial slide, try to do the unit test as below
 
 ### Known Problem
 
-1. "multi_robot_navigation_2.py" on all platforms (Windows/macOS): crashed.
+1. ~~"multi_robot_navigation_2.py" on all platforms (Windows/macOS): crashed.~~
 2. "multi_robot_navigation_2.py", "multi_robot_navigation_3.py", "multi_robot_navigation_deliver.py", "final_challenge.py" on macOS while using RoboStack: Python crashed.
 
 **Reference**: 
