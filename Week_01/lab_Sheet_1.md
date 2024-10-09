@@ -179,12 +179,7 @@ For some of you studying COMP0242 and COMP0245 courses, you should already have 
 
 To get started with conda (or mamba) as a package manager, you need to have a base conda installation. Please do *not* use the Anaconda installer, but rather start with [`miniforge`](https://github.com/conda-forge/miniforge) which is a much more "minimal" installer. This installer will create a "base" environment that contains the package managers conda and mamba. After this installation is done, you can move on to the next steps.
 
-Download the installer using curl or wget or your favorite program and run the script.
-
-```bash
-curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-bash Miniforge3-$(uname)-$(uname -m).sh
-```
+Download the installer from: https://conda-forge.org/download/
 
 run `conda` or `mamba` to see if it is installed successfully.
 
