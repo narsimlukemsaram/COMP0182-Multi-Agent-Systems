@@ -9,7 +9,7 @@ Same as shown in the TurtleBot3 Tutorial slide, try to do the unit test as below
 1. Clone the repository
     Go to your home directory and clone the PyBullet simulation code using the web URL:
     ```bash
-    Git clone https://github.com/JacksonChiy/turtlebot_simulation_pybullet
+    git clone https://github.com/JacksonChiy/turtlebot_simulation_pybullet
     ```
     
 2. Setup the environment
