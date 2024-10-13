@@ -49,7 +49,7 @@ https://www.raspberrypi.com/software/
 
 ![SSH](/Week_03/img/ssh.png)
 
-6. Insert back the SD card to the Raspberry Pi, enable the turtlebot by connecting it to the battery, and turn on the switch on the OpenCR controller (Please do not enable it before you read step 7).
+6. Insert back the SD card to your pc, access through your file explorer, open file `network-config` by any editor and check if line `hidden` is set to `false`. If not, change it to `false`
 
 7. Use `nmap` to get the IP Address of your Raspberry Pi. This is a tool to discover the IP Address of all the device connected to your Wi-Fi. It won't tell you which IP Address is your Raspberry Pi's but you can reason it out by comparing the change between before & after you enable your Raspberry Pi. To install it:
 
