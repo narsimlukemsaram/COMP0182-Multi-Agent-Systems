@@ -13,7 +13,7 @@ Make sure you select the correct version of ROS: **Noetic**
 
 **3. 1. PC Setup**
 
-You can skip the introduction video first, it is talking about setting up a TurtleBot3 in the Gazebo simulation world. You can go back and watch this after finishing this lab's work.
+You can skip the introduction video first, it talks about setting up a TurtleBot3 in the Gazebo simulation world. You can go back and watch this after finishing this lab's work.
 
 **1. 1. 1. Download and Install Ubuntu on PC  & 1. 1. 2. Install ROS on Remote PC**: 
 
@@ -24,8 +24,7 @@ Please follow the instructions in
 
 **1. 1. 5. Network Configuration**: 
 
-- `ROS_MASTER_URI` specifies the location of your ROS master which means  all other machines will communicate with it. This can be either your PC or the Raspberry pi, but you have to make it consistent among all the machines.
-- `ROS_HOSTNAME` Specifies the hostname or IP address of your machine, so it is unique for each machine.
+Just follow the instructions.
 
 **3.2. SBC Setup**
 
@@ -50,12 +49,12 @@ Just follow the instructions.
 Expected output:
 Teleoperating of TurtleBot3 from your laptop.
 
-Hints: 3 terminals from your pc, one for SSH, one for roscore, and one for teleoperation.
+Hints: 3 terminals from your PC, one for SSH, one for ROS (roscore), and one for teleoperation.
 
-## Task 2: Finding Single and Multiple ArUco Markers using Camera
+## Task 2: Finding single and multiple ArUco Markers using camera
 Follow [https://github.com/JacksonChiy/turtlebot3_burger_auto_navigation/blob/main/auto_aruco_marker_finder/launch/aruco_marker_finder.launch](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder)
 
 ## Task 3 (Optional): Find the ArUco Marker and navigate towards it. 
 
-## Task 4 (Optional): Naïve obstacle Avoidance using LiDAR
+## Task 4 (Optional): Naïve obstacle avoidance using LiDAR
 Follow https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/naive_obstacle_avoidance
