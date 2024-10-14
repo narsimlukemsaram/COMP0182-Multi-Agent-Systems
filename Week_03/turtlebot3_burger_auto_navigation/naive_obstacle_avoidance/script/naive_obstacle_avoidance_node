@@ -1,0 +1,67 @@
+#!/usr/bin/env python
+
+import rospy
+import math
+from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import Twist
+from nav_msgs.msg import Odometry
+
+
+LINEAR_VEL = 0.1
+MIN_DISTANCE = 0.4
+
+class Obstacle():
+    def __init__(self):
+        """
+            Set up publisher for velocity and initiate obstacle avoidance
+        """
+        self._cmd_pub = rospy.Publisher('cmd_vel', Twist, queue_size=1)
+        self.obstacle()
+
+    def get_scan(self):
+        """
+            Get laser scan values from LaserScan topics and apply filter for laser values in 0, -20 and 20 degrees.
+
+            Returns:
+
+            Laser values in 0, -20 and 20 degrees
+        """
+        scan = rospy.wait_for_message('scan', LaserScan)
+        scan_filter = [scan.ranges[len(scan.ranges) - 20], scan.ranges[0], scan.ranges[20]]
+        for i in range(len(scan_filter)):
+            if scan_filter[i] == float('Inf'):
+                scan_filter[i] = 3.5
+            elif math.isnan(scan_filter[i]):
+                scan_filter[i] = MIN_DISTANCE
+        return scan_filter
+    
+    def obstacle(self):
+        """
+           Get laser scan, publish angular velocity when detect objects in front, otherwise publish linear velocity
+        """
+        twist = Twist()
+        
+        while not rospy.is_shutdown():
+            twist.linear.x = 0.1
+            twist.angular.z = 0.0
+            self._cmd_pub.publish(twist)
+            scan = self.get_scan()
+            while(min(scan) <= MIN_DISTANCE):
+                if(min(scan) < MIN_DISTANCE/2):
+                    twist.linear.x = -0.05
+                else: 
+                    twist.linear.x = 0.0
+                twist.angular.z = 0.3
+                self._cmd_pub.publish(twist)
+                scan = self.get_scan()
+
+def main():
+    rospy.init_node('Turtlebot3_naive_obstacle_avoidance')
+    try:
+        obstacle = Obstacle()
+    except rospy.ROSInterruptException():
+        pass
+
+if __name__ == '__main__':
+    main()
+
