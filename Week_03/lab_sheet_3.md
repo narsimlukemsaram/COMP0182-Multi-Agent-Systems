@@ -133,11 +133,11 @@ https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_
 
 **Run ROS Master**:
 
-Open the first terminal, and run this command to run the ROS master:
+Open the first terminal, and run this command to execute the ROS master:
 
 $ roscore
 
-Let this terminal run the master always. Please do not close and terminate this window. 
+Let this terminal open to run the master always. Please do not close and terminate this terminal. 
 
 **Build or compile your workspace**:
 
@@ -145,7 +145,7 @@ Open the second terminal, and run this command to compile your workspace:
 
 $ cd catkin_ws
 
-$ catkin_ws$ catkin_make
+$ catkin_ws $ catkin_make
 
 **Publishing Images from Camera and Estimating the Pose**:
 
@@ -155,7 +155,7 @@ $ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/la
 
 and run this command to publish USB camera images and estimate the pose of the ArUco Marker:
 
-$ catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch$ roslaunch usb_cam_stream_publisher.launch
+$ catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch $ roslaunch usb_cam_stream_publisher.launch
 
 **Finding the ArUco Marker**:
 
@@ -165,7 +165,7 @@ $ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/la
 
 and run this command to find the ArUco Marker:
 
-$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch$ roslaunch aruco_marker_finder.launch markerId:=701 markerSize:=0.05
+$ catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch $ roslaunch aruco_marker_finder.launch markerId:=701 markerSize:=0.05
 
 **Open Rqt GUI**
 
@@ -185,7 +185,7 @@ Try to run multiple ArUco Markers finder code from the GitHub: Week_03/turtlebot
 
 **Reference**:
 
-GitHub: [Week_03/turtlebot3_burger_auto_navigation/](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder)
+GitHub: [Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch)
 
 ## Task 3 (Optional): Find the ArUco Marker and navigate towards it. 
 
