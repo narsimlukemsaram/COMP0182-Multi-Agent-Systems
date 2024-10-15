@@ -27,16 +27,18 @@ You should have finished these steps in previous lab sessions. If yes, please go
 If not please do it.
 
 **1. 1. 3 Install Dependent ROS Packages**
+
 Just follow the instructions.
 
 **1. 1. 4. Install TurtleBot3 Packages**
+
 Just follow the instructions.
 
 **1. 1. 5. Network Configuration**: 
 
 Just follow the instructions.
 
-**3.2. SBC Setup**
+**3. 2. SBC Setup**
 
 **0. 2. 1. Prepare microSD Card and Reader**
 
@@ -70,19 +72,19 @@ Just follow the instructions.
 
 **0.2.8. NEW LDS-02 Configuration**
 
-**3.3 OpenCR Setup**
+**3. 3. OpenCR Setup**
 
 Just follow the instructions.
 
-**3.4 Hardware Assembly**
+**3. 4. Hardware Assembly**
 
 This can be skipped as the turtlebots have already been built. 
 
-**3.5 Bringup**
+**3. 5. Bringup**
 
 Just follow the instructions.
 
-**3.6 Basic Operation**
+**3. 6. Basic Operation**
 
 Just follow the instructions.
 
