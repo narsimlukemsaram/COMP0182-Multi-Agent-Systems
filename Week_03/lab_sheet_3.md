@@ -114,10 +114,14 @@ Open a terminal on your Ubuntu 20.04. Type this command:
 $ sudo apt-get install ros-noetic-usb-cam ros-noetic-aruco-ros
 
 **Launch Files**:
+
 In GitHub: https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch, there are three launch files,
-01. usb_cam_stream_publisher.launch: USB image publisher
-02. aruco_marker_finder.launch: single ArUco Marker finder
-03. multiple_aruco_marker_finder.launch: multiple ArUco Markers finder
+
+1. usb_cam_stream_publisher.launch: USB image publisher
+   
+2. aruco_marker_finder.launch: single ArUco Marker finder
+   
+3. multiple_aruco_marker_finder.launch: multiple ArUco Markers finder
 
 **Run ROS Master**:
 
@@ -139,7 +143,7 @@ $ catkin_ws$ catkin_make
 
 Open third terminal, go to this folder:
 
-$ catkin_ws$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
+$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
 
 and run this command to publish USB camera images and estimate the pose of the ArUco Marker:
 
@@ -149,11 +153,11 @@ $ catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launc
 
 Open fourth terminal, go to this folder:
 
-$ catkin_ws$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
+$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
 
 and run this command to find the ArUco Marker:
 
-$ catkin_ws$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch$ roslaunch aruco_marker_finder.launch markerId:=701 markerSize:=0.05
+$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch$ roslaunch aruco_marker_finder.launch markerId:=701 markerSize:=0.05
 
 **Open Rqt GUI**
 
@@ -167,9 +171,9 @@ Open sixth terminal, run this command to see the pose of the marker:
 
 $ rostopic echo /aruco_single/pose
 
-Now, take the camera and keep on the ArUco Marker Id = 701 image, you can see the results in rqt_gui window.
+Now, take the camera and keep on the ArUco Marker Id = 701 image, you can see the results in rqt_gui window (from fifth terminal) and sixth terminal.
 
-Try to run multiple ArUco Markers finder from the GitHub: Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/multiple_aruco_marker_finder.launch
+Try to run multiple ArUco Markers finder code from the GitHub: Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/multiple_aruco_marker_finder.launch
 
 **Reference**:
 
