@@ -64,7 +64,16 @@ Just follow the instructions.
 
 **0.2.6. Configure the WiFi Network Setting**
 
-Just follow the instructions. If you are unable to go to this folder on your command prompt: "cd /media/$USER/writable/etc/netplan", you can go to this folder: "cd /etc/netplan".
+Boot Up the Raspberry Pi
+a. Connect the HDMI cable of the monitor to the HDMI port of Raspberry Pi.
+b. Connect input devices to the USB port of Raspberry Pi.
+c. Insert the microSD card.
+d. Connect the power (either with USB or OpenCR) to turn on the Raspberry Pi.
+e. Login with ID **ubuntu** and PASSWORD **turtlebot**.
+
+Just follow the instructions. 
+
+If you are unable to go to this folder on your command prompt: "cd /media/$USER/writable/etc/netplan", you can go to this folder: "cd /etc/netplan".
 
 **0.2.7. ROS Network Configuration**
 
