@@ -64,11 +64,16 @@ Just follow the instructions.
 
 **0.2.6. Configure the WiFi Network Setting**
 
-Boot Up the Raspberry Pi
+Boot Up the Raspberry Pi:
+
 a. Connect the HDMI cable of the monitor to the HDMI port of Raspberry Pi.
+
 b. Connect input devices to the USB port of Raspberry Pi.
+
 c. Insert the microSD card.
+
 d. Connect the power (either with USB or OpenCR) to turn on the Raspberry Pi.
+
 e. Login with ID **ubuntu** and PASSWORD **turtlebot**.
 
 Just follow the instructions. 
@@ -98,24 +103,27 @@ Just follow the instructions.
 Just follow the instructions.
 
 Expected output:
+
 Teleoperating of TurtleBot3 from your laptop.
 
 Hints: 3 terminals from your PC, one for SSH, one for ROS (roscore), and one for teleoperation.
 
 ## Task 2: Finding single and multiple ArUco Markers using the camera
 
-In this task, we are gonna show you how to track ArUco marker and estimate their pose using USB camera in Python 3 on Ubuntu 20.04 on ROS Noetic.
+In this task, we are gonna show you how to track ArUco markers and estimate their pose using a USB camera in Python 3 on Ubuntu 20.04 on ROS Noetic.
 
 **Installing the required package**:
 
 So first let’s install the required packages:
 
 Open a terminal on your Ubuntu 20.04. Type this command:
+
 $ sudo apt-get install ros-noetic-usb-cam ros-noetic-aruco-ros
 
 **Launch Files**:
 
-In GitHub: https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch, there are three launch files,
+In GitHub: 
+https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch, there are three launch files,
 
 1. usb_cam_stream_publisher.launch: USB image publisher
    
@@ -125,7 +133,7 @@ In GitHub: https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree
 
 **Run ROS Master**:
 
-Open first terminal, run this command to run the ROS master:
+Open the first terminal, and run this command to run the ROS master:
 
 $ roscore
 
@@ -133,7 +141,7 @@ Let this terminal run the master always. Please do not close and terminate this 
 
 **Build or compile your workspace**:
 
-Open second terminal, run this command to compile your workspace:
+Open the second terminal, and run this command to compile your workspace:
 
 $ cd catkin_ws
 
@@ -141,7 +149,7 @@ $ catkin_ws$ catkin_make
 
 **Publishing Images from Camera and Estimating the Pose**:
 
-Open third terminal, go to this folder:
+Open the third terminal, and go to this folder:
 
 $ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
 
@@ -151,7 +159,7 @@ $ catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launc
 
 **Finding the ArUco Marker**:
 
-Open fourth terminal, go to this folder:
+Open the fourth terminal, and go to this folder:
 
 $ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
 
@@ -161,17 +169,17 @@ $ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/la
 
 **Open Rqt GUI**
 
-Open fifth terminal, run this command to see the results:
+Open the fifth terminal, and run this command to see the results:
 
 $ rosrun rqt_gui rqt_gui
 
 **Pose of ArUco Marker**
 
-Open sixth terminal, run this command to see the pose of the marker:
+Open the sixth terminal, and run this command to see the pose of the marker:
 
 $ rostopic echo /aruco_single/pose
 
-Now, take the camera and keep on the ArUco Marker Id = 701 image, you can see the results in rqt_gui window (from fifth terminal) and sixth terminal.
+Now, take the camera and keep on the ArUco Marker Id = 701 image, you can see the results in rqt_gui window (from the fifth terminal) and the sixth terminal.
 
 Try to run multiple ArUco Markers finder code from the GitHub: Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/multiple_aruco_marker_finder.launch
 
@@ -182,4 +190,5 @@ GitHub: [Week_03/turtlebot3_burger_auto_navigation/](https://github.com/narsimlu
 ## Task 3 (Optional): Find the ArUco Marker and navigate towards it. 
 
 ## Task 4 (Optional): Naïve obstacle avoidance using LiDAR
+
 Follow https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/naive_obstacle_avoidance
