@@ -167,7 +167,9 @@ Open sixth terminal, run this command to see the pose of the marker:
 
 $ rostopic echo /aruco_single/pose
 
-Now, take the camera and keep on the ArUco Marker Id = 701 image, you can see the results rqt_gui window.
+Now, take the camera and keep on the ArUco Marker Id = 701 image, you can see the results in rqt_gui window.
+
+Try to run multiple ArUco Markers finder from the GitHub: Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/multiple_aruco_marker_finder.launch
 
 **Reference**:
 
