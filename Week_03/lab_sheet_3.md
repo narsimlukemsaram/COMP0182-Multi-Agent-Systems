@@ -210,7 +210,13 @@ Try to run multiple ArUco Markers finder code from the GitHub:
 GitHub: [Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch)
 
 ## Task 3 (Optional): Find the ArUco Marker and navigate towards it. 
+After managing to recognize 2 or more aruco marker at the same time, you can try using this feature to navigate your turtlebot. Check the code in [goal_pose](turtlebot3_burger_auto_navigation/auto_navigation/scripts/goal_pose.py) and try to use it for this task.
+
+Hint: one aruco marker as the coordinate of your turtlebot, and another one as the target.
 
 ## Task 4 (Optional): Naïve obstacle avoidance using LiDAR
 
-Follow https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/naive_obstacle_avoidance
+Follow the tutorial in [4. SLAM](https://emanual.robotis.com/docs/en/platform/turtlebot3/slam/#run-slam-node) and [5. Navigation](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#navigation)
+ from the turtlebot offcial document
+
+**Desired Output**: Build your own map using ```map_saver``` and use this map to achieve navigation with obstacle avoidance
