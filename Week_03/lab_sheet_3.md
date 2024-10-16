@@ -3,14 +3,15 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Task 1 (Mandatory): Install and connect the Remote PC (your Laptop) and Target Robot (TurtleBot3 Burger)
-Follow the official tutorial from
+Follow **Chatper 3: Quick Start Guide** from official tutorial from
 https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup
 
 **Important**: Make sure you select the correct version of ROS: **Noetic**
 
 ![TurtleBot3](/Week_03/img/noetic.png)
 
-### Key points
+### Key points 
+These are the points that you need to pay attention to while following the offcial tutorial. For the steps that are not mentioned here, just follow the content from the tutorial.
 
 **3. 1. PC Setup**
 
@@ -26,7 +27,7 @@ If not please do it.
 You should have finished these steps in previous lab sessions. If yes, skip this step and go to the "1. 1. 3 Install Dependent ROS Packages" sub-section.
 If not please do it.
 
-**1. 1. 3 Install Dependent ROS Packages**
+<!-- **1. 1. 3 Install Dependent ROS Packages**
 
 Just follow the instructions.
 
@@ -36,13 +37,13 @@ Just follow the instructions.
 
 **1. 1. 5. Network Configuration**: 
 
-Just follow the instructions.
+Just follow the instructions. -->
 
 **3. 2. SBC Setup**
 
-**0. 2. 1. Prepare microSD Card and Reader**
+<!-- **0. 2. 1. Prepare microSD Card and Reader**
 
-Just follow the instructions.
+Just follow the instructions. -->
 
 **0. 2. 2. Download TurtleBot3 SBC Image**
 
@@ -50,13 +51,13 @@ Download the correct image file for your hardware and ROS version. Noetic versio
 
 Please Download the "Raspberry Pi 4B (2GB or 4GB)" ROS Noetic image.
 
-**0. 2. 3. Unzip the downloaded image file**
+<!-- **0. 2. 3. Unzip the downloaded image file**
 
 Just follow the instructions.
 
 **0. 2. 4. Burn the image file**
 
-Just follow the instructions.
+Just follow the instructions. -->
 
 **0.2.5. Resize the Partition**
 
@@ -66,25 +67,25 @@ Just follow the instructions.
 
 Boot Up the Raspberry Pi:
 
-a. Connect the HDMI cable of the monitor to the HDMI port of Raspberry Pi.
+- Connect the HDMI cable of the monitor to the HDMI port of Raspberry Pi.
 
-b. Connect input devices to the USB port of Raspberry Pi.
+- Connect input devices to the USB port of Raspberry Pi.
 
-c. Insert the microSD card.
+- Insert the microSD card.
 
-d. Connect the power (either with USB or OpenCR) to turn on the Raspberry Pi.
+- Connect the power (either with USB or OpenCR) to turn on the Raspberry Pi.
 
-e. Login with ID **ubuntu** and PASSWORD **turtlebot**.
+- Login with ID **ubuntu** and PASSWORD **turtlebot**.
 
 Just follow the instructions. 
 
 If you are unable to go to this folder on your command prompt: "cd /media/$USER/writable/etc/netplan", you can go to this folder: "cd /etc/netplan" and follow the instructions. 
 
-**0.2.7. ROS Network Configuration**
+<!-- **0.2.7. ROS Network Configuration**
 
 Just follow the instructions.
 
-**0.2.8. NEW LDS-02 Configuration**
+**0.2.8. NEW LDS-02 Configuration** -->
 
 **3. 3. OpenCR Setup**
 
