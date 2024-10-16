@@ -110,7 +110,7 @@ Hints: 3 terminals from your PC, one for SSH, one for ROS (roscore), and one for
 
 ## Task 2: Finding single and multiple ArUco Markers using the camera
 
-In this task, we are gonna show you how to track ArUco markers and estimate their pose using a USB camera in Python 3 on Ubuntu 20.04 on ROS Noetic.
+In this task, we are gonna show you how to track ArUco markers and estimate their pose using a USB camera in Python 3 on Ubuntu 20.04 on ROS Noetic. **Use your own PC for this part, not the turtlebot**
 
 **Installing the required package**:
 
@@ -118,24 +118,28 @@ So first let’s install the required packages:
 
 Open a terminal on your Ubuntu 20.04. Type this command:
 
-$ sudo apt-get install ros-noetic-usb-cam ros-noetic-aruco-ros
+```bash
+sudo apt-get install ros-noetic-usb-cam ros-noetic-aruco-ros
+```
 
 **Launch Files**:
 
 In GitHub: 
 https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch, there are three launch files,
 
-1. usb_cam_stream_publisher.launch: USB image publisher
+1. ``usb_cam_stream_publisher.launch``: USB image publisher
    
-2. aruco_marker_finder.launch: single ArUco Marker finder
+2. ``aruco_marker_finder.launch``: single ArUco Marker finder
    
-3. multiple_aruco_marker_finder.launch: multiple ArUco Markers finder
+3. ``multiple_aruco_marker_finder.launch``: multiple ArUco Markers finder
 
 **Run ROS Master**:
 
 Open the first terminal, and run this command to execute the ROS master:
 
-$ roscore
+```bash
+roscore
+```
 
 Let this terminal open to run the master always. Please do not close and terminate this terminal. 
 
@@ -143,45 +147,63 @@ Let this terminal open to run the master always. Please do not close and termina
 
 Open the second terminal, and run this command to compile your workspace:
 
-$ cd catkin_ws
+```bash
+cd catkin_ws
+```
 
-$ catkin_ws $ catkin_make
+```bash
+catkin_ws 
+catkin_make
+```
 
 **Publishing Images from Camera and Estimating the Pose**:
 
 Open the third terminal, and go to this folder:
 
-$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
+```bash
+cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
+```
 
 and run this command to publish USB camera images and estimate the pose of the ArUco Marker:
 
-$ catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch $ roslaunch usb_cam_stream_publisher.launch
+```bash
+catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch $ roslaunch usb_cam_stream_publisher.launch
+```
 
 **Finding the ArUco Marker**:
 
 Open the fourth terminal, and go to this folder:
 
-$ cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
+```bash
+cd catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/
+```
 
 and run this command to find the ArUco Marker:
 
-$ catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch $ roslaunch aruco_marker_finder.launch markerId:=701 markerSize:=0.05
+```bash
+catkin_ws/src/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch $ roslaunch aruco_marker_finder.launch markerId:=701 markerSize:=0.05
+```
 
 **Open Rqt GUI**
 
 Open the fifth terminal, and run this command to see the results:
 
-$ rosrun rqt_gui rqt_gui
+```bash
+rosrun rqt_gui rqt_gui
+```
 
 **Pose of ArUco Marker**
 
 Open the sixth terminal, and run this command to see the pose of the marker:
 
-$ rostopic echo /aruco_single/pose
+```bash
+rostopic echo /aruco_single/pose
+```
 
 Now, take the camera and keep on the ArUco Marker Id = 701 image, you can see the results in rqt_gui window (from the fifth terminal) and the sixth terminal.
 
-Try to run multiple ArUco Markers finder code from the GitHub: Week_03/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/multiple_aruco_marker_finder.launch
+Try to run multiple ArUco Markers finder code from the GitHub: 
+[multi_aruco_marker](turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/multiple_aruco_marker_finder.launch)
 
 **Reference**:
 
