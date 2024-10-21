@@ -2,7 +2,63 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Task 1 
+## Task 1: Set up the catkin workspace and VS code
+
+**1. Open the first terminal, instead of sourcing the below ROS path every time:**
+
+source /opt/ros/noetic/setup.bash
+
+It's better to make automate by sourcing to ~/.bashrc one time:
+
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+**2. Install the essential dependencies one time:**
+
+sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+
+After all the above steps, try to run the below command to see if the ROS works correctly or not:
+
+roscore
+
+Note: Please do not close this terminal as long as you working on the ROS platform.
+
+**3. Open the second terminal, create and initialize the catkin workspace:**
+
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws
+catkin init
+
+**4. Clone GitHub repository:**
+
+Go to the src folder:
+
+cd ~/catkin_ws/src
+
+Clone the repository:
+
+git clone [https://github.com/Intelligent-Quads/iq_sim.git](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git)
+
+**5. Build the workspace**
+
+Go to catkin_ws, run catkin_make:
+
+cd ~/catkin_ws
+
+catkin_make
+
+**6. Open the third terminal, install vs code:**
+
+sudo snap install code --classic
+
+**7. To open the VS code editor from the command line just run **
+
+code .
+
+**8. After opening the VS code editor, try to open your cloned repository folder by browsing it. **
+
+Now try to work in VS code for your programming life is easy.
+
 ## Task 2
 ## Task 3
 
