@@ -67,7 +67,7 @@ code .
 **8. After opening the VS code editor, try to open your cloned repository folder by browsing it**
 Now try to work in VS code for your programming life is easy.
 
-## Task 2: Calibrating a Monocular Camera with ROS
+## Task 1: Calibrating a Monocular Camera with ROS
 
 ROS uses OpenCV for camera calibration but the format in which it stores the data is different than OpenCV. Also, you need to know where to place the camera calibration files so ROS can find them and publish them.
 
@@ -111,7 +111,7 @@ rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:
 
 https://ros-developer.com/2017/04/23/camera-calibration-with-ros/
 
-## Task 3: Troubleshoot ArUco Marker/Multiple Markers using USB Camera
+## Task 2: Troubleshoot ArUco Marker/Multiple Markers using USB Camera
 
 **Install usb_cam ROS Package**
 
@@ -130,6 +130,8 @@ Run the image viewer:
 rqt_image_view
 
 In the viewer, select the topic /usb_cam/image_raw to see the camera feed.
+
+Write Clock/Anti-clockwise, orientations
 
 ----------------------------------------------------------------------------------------------------------
 If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
@@ -286,7 +288,7 @@ You can manually disable it using the command:
 v4l2-ctl --set-ctrl=focus_auto=0
 
 
-## Task 4: SLAM using Laser Distance Sensor & Mapping
+## Task 3: SLAM using Laser Distance Sensor & Mapping
 ### Run SLAM code
 1. SSH to your Turtlebot from your **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **Turtlebot terminal**
 ```bash
@@ -305,7 +307,7 @@ roscore
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_slam turtlebot3_slam.launch
 ```
-This will take you to RViz, where the map, LiDAR, robot, etc are visulized.
+This will take you to RViz, where the map, LiDAR, robot, etc are visualized.
 
 ### Run Teleoperation
 On your **Remote PC**, run the teleoperation node, control your Turtlebot, exploring the lab and see the process of mapping
@@ -324,7 +326,7 @@ rosrun map_server map_saver -f ~/map
 After you manage to get the map, try let the Turtlebot auto-navigate, following the instructions in
 [5. Navigation](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#run-navigation-nodes)
 
-## Task 5: Use multiple aruco marker to navigate
+## Task 4: Use multiple aruco marker to navigate
 In previous task, you should manage to recognize multiple aruco markers at the same time from your camera. Now combining this aruco finder function and the Turtlebot moving function, you can navigate the Turtlebot to a desired goal. The position of Turtlebot and the goal is expressed by those aruco markers separately. The combined function can be found in
 [goal_pose.py](/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/scripts/goal_pose.py).
 Think about what else nodes you should launch before using it. 
