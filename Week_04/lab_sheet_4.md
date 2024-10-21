@@ -6,7 +6,7 @@
 ## Task 2
 ## Task 3
 
-## Task 4 SLAM using Laser Distance Sensor & Mapping
+## Task 4: SLAM using Laser Distance Sensor & Mapping
 ### Run SLAM code
 1. SSH to your Turtlebot from your **Remote PC**, with "ubuntu" as username and "turtlebot" as password. Run the Bringup on **Turtlebot terminal**
 ```bash
