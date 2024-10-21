@@ -288,10 +288,10 @@ v4l2-ctl --set-ctrl=focus_auto=0
 
 ## Task 4: SLAM using Laser Distance Sensor & Mapping
 ### Run SLAM code
-1. SSH to your Turtlebot from your **Remote PC**, with "ubuntu" as username and "turtlebot" as password. Run the Bringup on **Turtlebot terminal**
+1. SSH to your Turtlebot from your **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **Turtlebot terminal**
 ```bash
-ssh pi@{IP_ADDRESS_OF_RASPBERRY_PI}
-export TURTLEBOT3_MODEL=${TB3_MODEL}
+ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_PI}
+export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 
