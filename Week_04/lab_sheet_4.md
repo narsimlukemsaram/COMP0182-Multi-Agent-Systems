@@ -11,6 +11,7 @@ source /opt/ros/noetic/setup.bash
 It's better to make automate by sourcing to ~/.bashrc one time:
 
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+
 source ~/.bashrc
 
 **2. Install the essential dependencies one time:**
@@ -26,7 +27,9 @@ Note: Please do not close this terminal as long as you working on the ROS platfo
 **3. Open the second terminal, create and initialize the catkin workspace:**
 
 mkdir -p ~/catkin_ws/src
+
 cd ~/catkin_ws
+
 catkin init
 
 **4. Clone GitHub repository:**
@@ -51,15 +54,57 @@ catkin_make
 
 sudo snap install code --classic
 
-**7. To open the VS code editor from the command line just run **
+**7. To open the VS code editor from the command line just run**
 
 code .
 
-**8. After opening the VS code editor, try to open your cloned repository folder by browsing it. **
-
+**8. After opening the VS code editor, try to open your cloned repository folder by browsing it**
 Now try to work in VS code for your programming life is easy.
 
-## Task 2
+## Task 2: Calibrating a Monocular Camera with ROS
+
+ROS uses OpenCV for camera calibration but the format in which it stores the data is different than OpenCV. Also, you need to know where to place the camera calibration files so ROS can find them and publish them.
+
+1. First, you need to install the USB cam package from ROS and uvcdynctrl to disable autofocus:
+
+sudo apt-get install ros-noetic-usb-cam uvcdynctrl
+
+2. Open a terminal and run roscore:
+
+roscore
+
+3. Turn off the autofocus of your camera (if your camera supports autofocus):
+
+check if your camera supports autofocus:
+
+uvcdynctrl --device=/dev/video0 --clist
+turn off the autofocus:
+
+uvcdynctrl --device=/dev/video0 --set='Focus, Auto' 0
+check if the autofocus is off:
+
+uvcdynctrl --device=/dev/video0 --get='Focus, Auto'
+
+4. Publish the data from your camera, for example, via using usb_cam:
+
+rosrun usb_cam usb_cam_node
+
+5. Connect camera_calibratio to the node publishing camera images: (node and topic name should be adjusted: image:=/usb_cam/image_raw camera:=/usb_cam) and a checkerboard with 0.02517-meter squares:
+
+rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:=/usb_cam/image_raw camera:=/usb_cam --no-service-check
+
+6. After getting enough images click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
+
+/home/<username>/.ros/camera_info/head_camera.yaml
+ 
+7. Fix the calibration URL. Put the YAML file in the
+
+/home/<username>/.ros/camera_info/head_camera.yaml
+
+**Reference:**
+
+https://ros-developer.com/2017/04/23/camera-calibration-with-ros/
+
 ## Task 3
 
 ## Task 4: SLAM using Laser Distance Sensor & Mapping
@@ -114,8 +159,8 @@ Hint: The script subscribes two topics: ``/id100/aruco_single/pose`` and ``/id10
 
 ## To-Do List
 
-- [ ] Set up workspace/VS Code/Git Clone (Narsimlu)
-- [ ] Perform camera calibration (Narsimlu)
+- [x] Set up workspace/VS Code/Git Clone (Narsimlu)
+- [x] Perform camera calibration (Narsimlu)
 - [ ] Troubleshoot ArUco Marker/Multiple Markers using Logitech C920 Pro HD Camera (Narsimlu)
 - [x] Execute SLAM using Laser Distance Sensor (Task 04 of Lab Sheet 03) Mapping (Vincent)
 - [x] Set Navigation Goal Pose (Task 03 of Lab Sheet 03) (Vincent)
