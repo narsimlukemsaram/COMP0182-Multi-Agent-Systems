@@ -4,6 +4,12 @@
 
 ## Task 1: Set up the catkin workspace and VS code
 
+Regularly need to ensure your system is up-to-date and has the necessary packages for ROS:
+
+sudo apt update
+
+sudo apt upgrade
+
 **1. Open the first terminal, instead of sourcing the below ROS path every time:**
 
 source /opt/ros/noetic/setup.bash
@@ -105,7 +111,180 @@ rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:
 
 https://ros-developer.com/2017/04/23/camera-calibration-with-ros/
 
-## Task 3
+## Task 3: Troubleshoot ArUco Marker/Multiple Markers using USB Camera
+
+**Install usb_cam ROS Package**
+
+The usb_cam package is commonly used in ROS to interface with USB cameras or webcams.
+
+sudo apt install ros-noetic-usb-cam
+
+**To view the camera feed in ROS, you can use rqt_image_view:**
+
+Install the necessary tools:
+
+sudo apt install ros-noetic-rqt-image-view
+
+Run the image viewer:
+
+rqt_image_view
+
+In the viewer, select the topic /usb_cam/image_raw to see the camera feed.
+
+----------------------------------------------------------------------------------------------------------
+If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
+
+If the USB or webcam feed did not display in the above steps, there are several troubleshooting steps you can follow to identify and resolve the issue.
+
+**1. Check Camera Detection**
+First, ensure that the USB or webcam is properly detected by your system.
+
+a. Use v4l2-ctl to list video devices:
+
+v4l2-ctl --list-devices
+
+This command should list all connected video devices, including the webcam. 
+
+If /dev/video0 is not listed, try checking other video devices like /dev/video1, /dev/video2, etc.
+
+b. Check for video device files:
+
+ls /dev/video*
+
+This should display video devices like /dev/video0, /dev/video1, etc. If no devices are listed, your system may not be detecting the webcam properly.
+
+**2. Check Webcam Permissions**
+   
+If your webcam is detected but not accessible, there could be a permission issue.
+
+a. Add your user to the video group:
+
+Ensure your user has the necessary permissions to access video devices.
+
+sudo usermod -aG video $USER
+
+After running this command, log out and log back in for the changes to take effect.
+
+**3. Check for Camera Driver Issues**
+
+Sometimes, webcam drivers may not be properly loaded.
+
+a. Install the v4l-utils package:
+
+sudo apt install v4l-utils
+
+b. Verify the camera status using dmesg:
+
+Run the following command right after plugging in your USB camera (or checking the built-in webcam):
+
+dmesg | grep video
+
+This will show kernel logs related to video devices, which might indicate if there are any issues with loading the camera driver.
+
+**4. Install or Reinstall Camera Software**
+
+Ensure that the software required for your webcam is installed and working.
+
+a. Reinstall Cheese:
+
+If Cheese failed to open the webcam feed, try reinstalling it:
+
+sudo apt remove cheese
+
+sudo apt install cheese
+
+Then, run cheese again:
+
+cheese
+
+**5. Test with ffmpeg or mplayer**
+
+To bypass GUI tools and directly test the camera feed from the terminal, you can use ffmpeg or player.
+
+a. Test with ffmpeg:
+
+ffmpeg -f v4l2 -i /dev/video0 -vframes 1 out.jpg
+
+This command will capture a single frame from the webcam and save it as out.jpg in the current directory. If successful, it means the camera is working.
+
+b. Test with player:
+
+Install mplayer and test it:
+
+sudo apt install player
+
+mplayer tv:// -tv device=/dev/video0
+
+This should open a window with your webcam feed. Adjust device=/dev/videoX if your camera is on a different device.
+
+**6. Check for Hardware Issues**
+
+If none of the above steps work, there might be a hardware-related issue with your webcam or USB port:
+
+ Try using a different USB port (if using a USB camera).
+ 
+ Test the webcam on another machine or operating system to rule out hardware failure.
+
+**7. Update System Drivers**
+
+Ensure that all drivers are up to date:
+
+sudo apt update
+
+sudo apt upgrade
+
+After running the updates, reboot your system and check if the webcam feed works.
+
+**8. To disable or modify the use of focus_auto in your ROS usb_cam launch file or camera configuration, follow these steps:**
+
+In the launch file (e.g., usb_cam_stream_publisher.launch), you need to adjust the parameters that control the camera settings.
+
+First, open the launch file:
+
+nano usb_cam_stream_publisher.launch
+
+Add a parameter to explicitly disable focus_auto. Use v4l2 control parameters, which can be set in the launch file:
+
+<param name="focus_auto" value="0" /> <!-- 0 means 'off' -->
+
+Example of how your node might look after adding the focus control:
+
+<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
+  <param name="video_device" value="/dev/video0" />
+  <param name="image_width" value="640" />
+  <param name="image_height" value="480" />
+  <param name="pixel_format" value="mjpeg" />
+  <param name="camera_frame_id" value="usb_cam" />
+  <param name="io_method" value="mmap" />
+  <param name="focus_auto" value="0" /> <!-- Disable autofocus -->
+</node>
+
+After modifying the launch file or using v4l2-ctl, restart the launch file with:
+
+roslaunch usb_cam_stream_publisher.launch
+
+This should prevent the error related to focus_auto if it's unsupported by your camera. If the focus_auto parameter isn't recognized, you can leave it out, as the node will ignore it.
+
+**9. Ti disable manually the use of focus_auto, follow these steps:**
+
+ You can use the v4l2-ctl command to check if the camera supports this control and what its current value is. Run:
+
+ v4l2-ctl --list-ctrls
+
+ This will give you a list of all the controls supported by your camera. If focus_auto is present, you will see something like:
+
+ focus_auto (menu)   : min=0 max=1 default=1 value=1
+
+ where, 
+ 
+        0 means autofocus is disabled. 
+ 
+       1 means autofocus is enabled.
+
+You can manually disable it using the command:
+
+v4l2-ctl --set-ctrl=focus_auto=0
+
 
 ## Task 4: SLAM using Laser Distance Sensor & Mapping
 ### Run SLAM code
@@ -161,7 +340,7 @@ Hint: The script subscribes two topics: ``/id100/aruco_single/pose`` and ``/id10
 
 - [x] Set up workspace/VS Code/Git Clone (Narsimlu)
 - [x] Perform camera calibration (Narsimlu)
-- [ ] Troubleshoot ArUco Marker/Multiple Markers using Logitech C920 Pro HD Camera (Narsimlu)
+- [x] Troubleshoot ArUco Marker/Multiple Markers using Logitech C920 Pro HD Camera (Narsimlu)
 - [x] Execute SLAM using Laser Distance Sensor (Task 04 of Lab Sheet 03) Mapping (Vincent)
 - [x] Set Navigation Goal Pose (Task 03 of Lab Sheet 03) (Vincent)
 
