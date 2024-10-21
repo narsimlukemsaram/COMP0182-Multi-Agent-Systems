@@ -5,11 +5,11 @@
 ## Task 1: Set up the catkin workspace and VS code
 
 Regularly need to ensure your system is up-to-date and has the necessary packages for ROS:
-
+```bash
 sudo apt update
 
 sudo apt upgrade
-
+```
 **1. Open the first terminal, instead of sourcing the below ROS path every time:**
 
 source /opt/ros/noetic/setup.bash
@@ -46,7 +46,7 @@ cd ~/catkin_ws/src
 
 Clone the repository:
 
-git clone [https://github.com/Intelligent-Quads/iq_sim.git](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git)
+git clone [mas.git](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git)
 
 **5. Build the workspace**
 
