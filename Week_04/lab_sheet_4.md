@@ -55,23 +55,23 @@ check if the autofocus is off or not:
 uvcdynctrl --device=/dev/video0 --get='Focus, Auto'
 ```
 
-4. Publish the data from your camera, for example, via using usb_cam:
+5. Publish the data from your camera, for example, via using usb_cam:
 
 ```bash
 rosrun usb_cam usb_cam_node
 ```
 
-5. Connect camera_calibration to the node publishing camera images: (node and topic name should be adjusted: image:=/usb_cam/image_raw camera:=/usb_cam) and a checkerboard with 0.02517-meter squares:
+6. Connect camera_calibration to the node publishing camera images: (node and topic name should be adjusted: image:=/usb_cam/image_raw camera:=/usb_cam) and a checkerboard with 0.02517-meter squares:
 
 ```bash
 rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:=/usb_cam/image_raw camera:=/usb_cam --no-service-check
 ```
 
-6. After getting enough images click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
+7. After getting enough images click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
 
 /home/<username>/.ros/camera_info/head_camera.yaml
  
-7. Fix the calibration URL. Put the YAML file in the
+8. Fix the calibration URL. Put the YAML file in the
 
 /home/<username>/.ros/camera_info/head_camera.yaml
 
