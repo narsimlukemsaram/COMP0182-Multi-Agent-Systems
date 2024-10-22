@@ -4,7 +4,7 @@
 
 ## Task 1: Calibrating a Monocular Camera with ROS
 
-ROS uses OpenCV for camera calibration but the format in which it stores the data is different than OpenCV. Also, you need to know where to place the camera calibration files so ROS can find them and publish them.
+ROS uses OpenCV for camera calibration but the format in which it stores the data differs from OpenCV. Also, please know where to place the camera calibration files so ROS can find them and publish them.
 
 1. First, you need to install the USB cam package from ROS and uvcdynctrl to disable autofocus:
 
@@ -76,7 +76,9 @@ Think about what else nodes you should launch before using it.
 Hint: The script subscribes two topics: ``/id100/aruco_single/pose`` and ``/id101/aruco_single/pose``, and publish ``/cmd_vel``
 
 ## Task 3: SLAM using Laser Distance Sensor & Mapping
+
 ### Run SLAM code
+
 1. SSH to your Turtlebot from your **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **Turtlebot terminal**
 ```bash
 ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_PI}
@@ -118,10 +120,11 @@ After you manage to get the map, try let the Turtlebot auto-navigate, following 
 
 To be filled
 
-
+============================================================================================================================
+Troubleshoot / Suggestions
 ============================================================================================================================
 
-## Task 1: Set up the catkin workspace and VS code
+## How to set up the catkin workspace and VS code
 
 Regularly need to ensure your system is up-to-date and has the necessary packages for ROS:
 ```bash
@@ -186,11 +189,7 @@ code .
 **8. After opening the VS code editor, try to open your cloned repository folder by browsing it**
 Now try to work in VS code for your programming life is easy.
 
-
-
-
-----------------------------------------------------------------------------------------------------------
-If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
+## If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
 
 If the USB or webcam feed did not display in the above steps, there are several troubleshooting steps you can follow to identify and resolve the issue.
 
@@ -347,9 +346,12 @@ v4l2-ctl --set-ctrl=focus_auto=0
 
 ## To-Do List
 
-- [x] Set up workspace/VS Code/Git Clone (Narsimlu)
-- [x] Perform camera calibration (Narsimlu)
-- [x] Troubleshoot ArUco Marker/Multiple Markers using Logitech C920 Pro HD Camera (Narsimlu)
-- [x] Execute SLAM using Laser Distance Sensor (Task 04 of Lab Sheet 03) Mapping (Vincent)
-- [x] Set Navigation Goal Pose (Task 03 of Lab Sheet 03) (Vincent)
+- [Task 1] Perform camera calibration (using Checkerboard)
+- [Task 2] Goal Pose using ArUco Markers (using USB Camera or Webcam)
+- [Task 3] SLAM/Map using Laser Distance Sensor and execute Goal Pose (using LDS/LiDAR)
+- [Task_4] Obstacle Avoidance (using LDS/LiDAR/Camera)
 
+## Troubleshooting References
+
+- Set up workspace/VS Code/Git Clone
+- Troubleshoot ArUco Marker/Multiple Markers using Logitech C920 Pro HD Camera
