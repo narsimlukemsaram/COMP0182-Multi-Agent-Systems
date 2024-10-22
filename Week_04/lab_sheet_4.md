@@ -78,7 +78,7 @@ rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:
 
 **Install usb_cam ROS Package**
 
-The usb_cam package is commonly used in ROS to interface with USB cameras or webcams.
+1. The usb_cam package is commonly used in ROS to interface with USB cameras or webcams.
 
 ```bash
 sudo apt install ros-noetic-usb-cam
@@ -86,13 +86,13 @@ sudo apt install ros-noetic-usb-cam
 
 **To view the camera feed in ROS, you can use rqt_image_view:**
 
-Install the necessary tools:
+2. Install the necessary tools:
 
 ```bash
 sudo apt install ros-noetic-rqt-image-view
 ```
 
-Run the image viewer:
+3. Run the image viewer:
 
 ```bash
 rqt_image_view
