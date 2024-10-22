@@ -121,6 +121,9 @@ After you manage to get the map, try let the Turtlebot auto-navigate, following 
 To be filled
 
 
+
+## If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
+
 ==============================================================================
 
 **Troubleshoot / Suggestions**
@@ -192,7 +195,7 @@ code .
 **8. After opening the VS code editor, try to open your cloned repository folder by browsing it**
 Now try to work in VS code for your programming life is easy.
 
-## If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
+**If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.**
 
 If the USB or webcam feed did not display in the above steps, there are several troubleshooting steps you can follow to identify and resolve the issue.
 
