@@ -104,7 +104,11 @@ Try to keep checkerboard in slightly oriented (45/90/135/180 degrees) and change
 
 **Reference:**
 
-https://ros-developer.com/2017/04/23/camera-calibration-with-ros/
+[1]. https://ros-developer.com/2017/04/23/camera-calibration-with-ros/
+
+[2]. https://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration/
+
+
 
 ## Task 2: Goal Pose using ArUco Markers (using USB Camera/Webcam)
 
