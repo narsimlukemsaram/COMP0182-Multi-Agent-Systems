@@ -2,7 +2,7 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Task 1: Calibrating a Monocular Camera with ROS
+## Task 1: Perform camera calibration (using Checkerboard)
 
 ROS uses OpenCV for camera calibration but the format in which it stores the data differs from OpenCV. Also, please know where to place the camera calibration files so ROS can find them and publish them.
 
@@ -67,7 +67,7 @@ To be filled: Write Clock/Anti-clockwise, orientations
 
 https://ros-developer.com/2017/04/23/camera-calibration-with-ros/
 
-## Task 2: Goal Pose using ArUco Markers (USB Camera or Webcam) 
+## Task 2: Goal Pose using ArUco Markers (using USB Camera/Webcam)
 
 In the previous task, you should manage to recognize multiple aruco markers at the same time from your camera. Now combining this aruco finder function and the Turtlebot moving function, you can navigate the Turtlebot to a desired goal. The position of Turtlebot and the goal is expressed by those aruco markers separately. The combined function can be found in
 [goal_pose.py](/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/scripts/goal_pose.py).
@@ -75,7 +75,7 @@ Think about what else nodes you should launch before using it.
 
 Hint: The script subscribes two topics: ``/id100/aruco_single/pose`` and ``/id101/aruco_single/pose``, and publish ``/cmd_vel``
 
-## Task 3: SLAM using Laser Distance Sensor & Mapping
+## Task 3: SLAM/Map using Laser Distance Sensor and execute Goal Pose (using LDS/LiDAR)
 
 ### Run SLAM code
 
@@ -116,7 +116,7 @@ After you manage to get the map, try let the Turtlebot auto-navigate, following 
 [5. Navigation](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#run-navigation-nodes)
 
 
-**Task 4: Obstacle Avoidance**
+## Task 4: Obstacle Avoidance (using LDS/LiDAR/Camera)
 
 To be filled
 
@@ -349,7 +349,7 @@ v4l2-ctl --set-ctrl=focus_auto=0
 ## To-Do List
 
 - [Task 1] Perform camera calibration (using Checkerboard)
-- [Task 2] Goal Pose using ArUco Markers (using USB Camera or Webcam)
+- [Task 2] Goal Pose using ArUco Markers (using USB Camera/Webcam)
 - [Task 3] SLAM/Map using Laser Distance Sensor and execute Goal Pose (using LDS/LiDAR)
 - [Task_4] Obstacle Avoidance (using LDS/LiDAR/Camera)
 
