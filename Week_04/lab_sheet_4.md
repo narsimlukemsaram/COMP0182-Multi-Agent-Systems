@@ -120,11 +120,12 @@ After you manage to get the map, try let the Turtlebot auto-navigate, following 
 
 To be filled
 
-==========================
 
-Troubleshoot / Suggestions
+==============================================================================
 
-==========================
+**Troubleshoot / Suggestions**
+
+==============================================================================
 
 ## How to set up the catkin workspace and VS code
 
