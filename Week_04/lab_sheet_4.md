@@ -144,18 +144,21 @@ This will take you to RViz, where the map, LiDAR, robot, etc are visualized.
 
 ### Run Teleoperation
 On your **Remote PC**, run the teleoperation node, control your TurtleBot3, exploring the lab and see the process of mapping
+
 ```bash
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
-``
+```
 Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop the TurtleBot3.
 
 ### Save Map
 
 In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data has been collected while it is traveling in last step
+
 ```bash
 rosrun map_server map_saver -f ~/map
 ```
+
 The -f option specifies a folder location and a file name where files to be saved. With the above command, map.pgm and map.yaml will be saved in the home folder ~/(/home/${username}). 
 
 ### Navigation
