@@ -344,13 +344,9 @@ This will show kernel logs related to video devices, which might indicate if the
 
 Ensure that the software required for your webcam is installed and working.
 
-a. Reinstall Cheese:
+a. Install Cheese:
 
 If Cheese failed to open the webcam feed, try reinstalling it:
-
-```bash
-sudo apt remove cheese
-```
 
 ```bash
 sudo apt install cheese
@@ -447,31 +443,19 @@ roslaunch usb_cam_stream_publisher.launch
 
 This should prevent the error related to focus_auto if it's unsupported by your camera. If the focus_auto parameter isn't recognized, you can leave it out, as the node will ignore it.
 
-9. To disable manually the use of focus_auto, follow these steps:
+9. Adjust the Pixel Format:
 
- You can use the v4l2-ctl command to check if the camera supports this control and what its current value is. Run:
+If the camera doesn't support mjpeg as the pixel format, try changing it to yuyv, which is widely supported:
 
 ```bash
- v4l2-ctl --list-ctrls
+<param name="pixel_format" value="yuyv"/>
 ```
 
- This will give you a list of all the controls supported by your camera. If focus_auto is present, you will see something like:
-
- ```bash
- focus_auto (menu)   : min=0 max=1 default=1 value=1
- ```
-
- where, 
- 
-        0 means autofocus is disabled. 
- 
-       1 means autofocus is enabled.
-
-You can manually disable it using the command:
+Save the launch file and try again:
 
 ```bash
-v4l2-ctl --set-ctrl=focus_auto=0
- ```
+roslaunch usb_cam_stream_publisher.launch
+```
 
 
 ## To-Do List
