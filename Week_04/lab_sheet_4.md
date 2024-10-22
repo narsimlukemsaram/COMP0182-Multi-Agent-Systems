@@ -173,31 +173,40 @@ To be filled
 
 
 
-## If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
 
 ==============================================================================
 
-**Troubleshoot / Suggestions**
+## Troubleshoot / Suggestions
 
 ==============================================================================
 
 ## How to set up the catkin workspace and VS code
 
 Regularly need to ensure your system is up-to-date and has the necessary packages for ROS:
+
 ```bash
 sudo apt update
+```
 
+```bash
 sudo apt upgrade
 ```
+
 **1. Open the first terminal, instead of sourcing the below ROS path every time:**
 
+```bash
 source /opt/ros/noetic/setup.bash
+```
 
 It's better to make automate by sourcing to ~/.bashrc one time:
 
+```bash
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+```
 
+```bash
 source ~/.bashrc
+```
 
 **2. Install the essential dependencies one time:**
 
@@ -205,48 +214,70 @@ sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator 
 
 After all the above steps, try to run the below command to see if the ROS works correctly or not:
 
+```bash
 roscore
+```
 
 Note: Please do not close this terminal as long as you working on the ROS platform.
 
 **3. Open the second terminal, create and initialize the catkin workspace:**
 
+```bash
 mkdir -p ~/catkin_ws/src
+```
 
+```bash
 cd ~/catkin_ws
+```
 
+```bash
 catkin init
+```
 
 **4. Clone GitHub repository:**
 
 Go to the src folder:
 
+```bash
 cd ~/catkin_ws/src
+```
 
 Clone the repository:
 
-git clone [mas.git](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git)
+```bash
+git clone https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git
+```
 
 **5. Build the workspace**
 
 Go to catkin_ws, run catkin_make:
 
+```bash
 cd ~/catkin_ws
+```
 
+```bash
 catkin_make
+```
 
 **6. Open the third terminal, install vs code:**
 
+```bash
 sudo snap install code --classic
+```
 
 **7. To open the VS code editor from the command line just run**
 
+```bash
 code .
+```
 
 **8. After opening the VS code editor, try to open your cloned repository folder by browsing it**
 Now try to work in VS code for your programming life is easy.
 
-**If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.**
+
+
+## If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
 
 If the USB or webcam feed did not display in the above steps, there are several troubleshooting steps you can follow to identify and resolve the issue.
 
@@ -255,7 +286,9 @@ First, ensure that the USB or webcam is properly detected by your system.
 
 a. Use v4l2-ctl to list video devices:
 
+```bash
 v4l2-ctl --list-devices
+```
 
 This command should list all connected video devices, including the webcam. 
 
@@ -263,7 +296,9 @@ If /dev/video0 is not listed, try checking other video devices like /dev/video1,
 
 b. Check for video device files:
 
+```bash
 ls /dev/video*
+```
 
 This should display video devices like /dev/video0, /dev/video1, etc. If no devices are listed, your system may not be detecting the webcam properly.
 
@@ -275,7 +310,9 @@ a. Add your user to the video group:
 
 Ensure your user has the necessary permissions to access video devices.
 
+```bash
 sudo usermod -aG video $USER
+```
 
 After running this command, log out and log back in for the changes to take effect.
 
@@ -285,13 +322,17 @@ Sometimes, webcam drivers may not be properly loaded.
 
 a. Install the v4l-utils package:
 
+```bash
 sudo apt install v4l-utils
+```
 
 b. Verify the camera status using dmesg:
 
 Run the following command right after plugging in your USB camera (or checking the built-in webcam):
 
+```bash
 dmesg | grep video
+```
 
 This will show kernel logs related to video devices, which might indicate if there are any issues with loading the camera driver.
 
@@ -303,13 +344,18 @@ a. Reinstall Cheese:
 
 If Cheese failed to open the webcam feed, try reinstalling it:
 
+```bash
 sudo apt remove cheese
+```
 
+```bash
 sudo apt install cheese
+```
 
 Then, run cheese again:
-
+```bash
 cheese
+```
 
 **5. Test with ffmpeg or mplayer**
 
@@ -317,7 +363,9 @@ To bypass GUI tools and directly test the camera feed from the terminal, you can
 
 a. Test with ffmpeg:
 
+```bash
 ffmpeg -f v4l2 -i /dev/video0 -vframes 1 out.jpg
+```
 
 This command will capture a single frame from the webcam and save it as out.jpg in the current directory. If successful, it means the camera is working.
 
@@ -325,9 +373,13 @@ b. Test with player:
 
 Install mplayer and test it:
 
+```bash
 sudo apt install player
+```
 
+```bash
 mplayer tv:// -tv device=/dev/video0
+```
 
 This should open a window with your webcam feed. Adjust device=/dev/videoX if your camera is on a different device.
 
@@ -343,9 +395,13 @@ If none of the above steps work, there might be a hardware-related issue with yo
 
 Ensure that all drivers are up to date:
 
+```bash
 sudo apt update
+```
 
+```bash
 sudo apt upgrade
+```
 
 After running the updates, reboot your system and check if the webcam feed works.
 
@@ -355,14 +411,19 @@ In the launch file (e.g., usb_cam_stream_publisher.launch), you need to adjust t
 
 First, open the launch file:
 
+```bash
 nano usb_cam_stream_publisher.launch
+```
 
 Add a parameter to explicitly disable focus_auto. Use v4l2 control parameters, which can be set in the launch file:
 
+```bash
 <param name="focus_auto" value="0" /> <!-- 0 means 'off' -->
+```
 
 Example of how your node might look after adding the focus control:
 
+```bash
 <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
   <param name="video_device" value="/dev/video0" />
   <param name="image_width" value="640" />
@@ -372,10 +433,13 @@ Example of how your node might look after adding the focus control:
   <param name="io_method" value="mmap" />
   <param name="focus_auto" value="0" /> <!-- Disable autofocus -->
 </node>
+```
 
 After modifying the launch file or using v4l2-ctl, restart the launch file with:
 
+```bash
 roslaunch usb_cam_stream_publisher.launch
+```
 
 This should prevent the error related to focus_auto if it's unsupported by your camera. If the focus_auto parameter isn't recognized, you can leave it out, as the node will ignore it.
 
@@ -383,11 +447,15 @@ This should prevent the error related to focus_auto if it's unsupported by your 
 
  You can use the v4l2-ctl command to check if the camera supports this control and what its current value is. Run:
 
+```bash
  v4l2-ctl --list-ctrls
+```
 
  This will give you a list of all the controls supported by your camera. If focus_auto is present, you will see something like:
 
+ ```bash
  focus_auto (menu)   : min=0 max=1 default=1 value=1
+ ```
 
  where, 
  
@@ -397,8 +465,9 @@ This should prevent the error related to focus_auto if it's unsupported by your 
 
 You can manually disable it using the command:
 
+```bash
 v4l2-ctl --set-ctrl=focus_auto=0
-
+ ```
 
 
 ## To-Do List
