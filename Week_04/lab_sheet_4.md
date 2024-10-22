@@ -123,19 +123,19 @@ Hint: The script subscribes two topics: ``/id100/aruco_single/pose`` and ``/id10
 
 ### Run SLAM code
 
-1. SSH to your TurtleBot3 from your **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**
+SSH to your TurtleBot3 from your **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**
 ```bash
 ssh ubuntu@{IP_ADDRESS_OF_TURTLEBOT3}
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 
-2. On your **Remote PC**, run ``roscore``
+On your **Remote PC**, run ``roscore``
 ```bash
 roscore
 ```
 
-3. Still on **Remote PC**, open a new terminal and run SLAM node
+Still on **Remote PC**, open a new terminal and run SLAM node
 ```bash
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_slam turtlebot3_slam.launch
@@ -153,7 +153,7 @@ Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop 
 
 ### Save Map
 
-1. In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data has been collected while it is traveling in last step
+In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data has been collected while it is traveling in last step
 
 ```bash
 rosrun map_server map_saver -f ~/map
@@ -163,7 +163,7 @@ The -f option specifies a folder location and a file name where files to be save
 
 ### Navigation
 
-1. After you manage to get the map, try let the TurtleBot3 auto-navigate, following the instructions in
+After you manage to get the map, try let the TurtleBot3 auto-navigate, following the instructions in
 [5. Navigation](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#run-navigation-nodes)
 
 
@@ -244,13 +244,13 @@ Go to the src folder:
 cd ~/catkin_ws/src
 ```
 
-7. Clone the repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git
 ```
 
-8. Build the workspace
+7. Build the workspace
 
 Go to catkin_ws, run catkin_make:
 
@@ -262,19 +262,19 @@ cd ~/catkin_ws
 catkin_make
 ```
 
-9. Open the third terminal, install vs code:
+8. Open the third terminal, install vs code:
 
 ```bash
 sudo snap install code --classic
 ```
 
-10. To open the VS code editor from the command line just run:
+9. To open the VS code editor from the command line just run:
 
 ```bash
 code .
 ```
 
-11. After opening the VS code editor, try to open your cloned repository folder by browsing it
+10. After opening the VS code editor, try to open your cloned repository folder by browsing it
 
 Now try to work in VS code for your programming life is easy.
 
