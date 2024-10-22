@@ -4,35 +4,68 @@
 
 ## Task 1: Perform camera calibration (using Checkerboard)
 
-ROS uses OpenCV for camera calibration but the format in which it stores the data differs from OpenCV. Also, please know where to place the camera calibration files so ROS can find them and publish them.
+ROS use OpenCV for camera calibration but the format that it stores the data is different than OpenCV. Also, you need to know where to place the camera calibration files so ROS can find it and publish it (/home/<username>/.ros/camera_info/head_camera.yaml).
 
-1. First, you need to install the USB cam package from ROS and uvcdynctrl to disable autofocus:
+1. First, you need to install the USB cam package from ROS and uvcdynctrl to disable autofocus, open a terminal and run the below:
 
+```bash
 sudo apt-get install ros-noetic-usb-cam uvcdynctrl
+```
 
-2. Open a terminal and run roscore:
+2. Open a terminal and run the below and remain opened:
 
+```bash
 roscore
+```
 
-3. Turn off the autofocus of your camera (if your camera supports autofocus):
+3. Now, check if your camera autofocus status:
 
-check if your camera supports autofocus:
-
+```bash
 uvcdynctrl --device=/dev/video0 --clist
-turn off the autofocus:
 
+Listing available controls for device /dev/video0:
+  Brightness
+  Contrast
+  Saturation
+  White Balance Temperature, Auto
+  Gain
+  Power Line Frequency
+  White Balance Temperature
+  Sharpness
+  Backlight Compensation
+  Exposure, Auto
+  Exposure (Absolute)
+  Exposure, Auto Priority
+  Pan (Absolute)
+  Tilt (Absolute)
+  Focus (absolute)
+  Focus, Auto
+  Zoom, Absolute
+```
+
+4. You can turn off the autofocus:
+
+```bash
 uvcdynctrl --device=/dev/video0 --set='Focus, Auto' 0
-check if the autofocus is off:
+```
 
+check if the autofocus is off or not:
+
+```bash
 uvcdynctrl --device=/dev/video0 --get='Focus, Auto'
+```
 
 4. Publish the data from your camera, for example, via using usb_cam:
 
+```bash
 rosrun usb_cam usb_cam_node
+```
 
-5. Connect camera_calibratio to the node publishing camera images: (node and topic name should be adjusted: image:=/usb_cam/image_raw camera:=/usb_cam) and a checkerboard with 0.02517-meter squares:
+5. Connect camera_calibration to the node publishing camera images: (node and topic name should be adjusted: image:=/usb_cam/image_raw camera:=/usb_cam) and a checkerboard with 0.02517-meter squares:
 
+```bash
 rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:=/usb_cam/image_raw camera:=/usb_cam --no-service-check
+```
 
 6. After getting enough images click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
 
@@ -47,21 +80,27 @@ rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:
 
 The usb_cam package is commonly used in ROS to interface with USB cameras or webcams.
 
+```bash
 sudo apt install ros-noetic-usb-cam
+```
 
 **To view the camera feed in ROS, you can use rqt_image_view:**
 
 Install the necessary tools:
 
+```bash
 sudo apt install ros-noetic-rqt-image-view
+```
 
 Run the image viewer:
 
+```bash
 rqt_image_view
+```
 
 In the viewer, select the topic /usb_cam/image_raw to see the camera feed.
 
-To be filled: Write Clock/Anti-clockwise, orientations
+Try to keep checkerboard in slightly oriented (45/90/135/180 degrees) and change it from clock-wise to anti clock-wise. 
 
 **Reference:**
 
