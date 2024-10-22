@@ -69,11 +69,11 @@ rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:
 
 7. After getting enough images click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
 
-/home/<username>/.ros/camera_info/head_camera.yaml
+/home/<<username>>/.ros/camera_info/head_camera.yaml
  
 8. Fix the calibration URL. Put the YAML file in the
 
-/home/<username>/.ros/camera_info/head_camera.yaml
+/home/<<username>>/.ros/camera_info/head_camera.yaml
 
 
 **Install usb_cam ROS Package**
@@ -100,7 +100,7 @@ rqt_image_view
 
 In the viewer, select the topic /usb_cam/image_raw to see the camera feed.
 
-Try to keep checkerboard in slightly oriented (45/90/135/180 degrees) and change it from clock-wise to anti clock-wise. 
+Note: Try to keep checkerboard in slightly oriented (45/90/135/180 degrees) and change it from clock-wise to anti clock-wise during calibration process. 
 
 **References:**
 
@@ -153,7 +153,7 @@ Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop 
 
 ### Save Map
 
-In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data has been collected while it is traveling in last step
+1. In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data has been collected while it is traveling in last step
 
 ```bash
 rosrun map_server map_saver -f ~/map
@@ -163,13 +163,13 @@ The -f option specifies a folder location and a file name where files to be save
 
 ### Navigation
 
-After you manage to get the map, try let the TurtleBot3 auto-navigate, following the instructions in
+1. After you manage to get the map, try let the TurtleBot3 auto-navigate, following the instructions in
 [5. Navigation](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#run-navigation-nodes)
 
 
 ## Task 4: Obstacle Avoidance (using LDS/LiDAR/Camera)
 
-To be filled
+To be filled.
 
 
 
@@ -182,7 +182,7 @@ To be filled
 
 ## How to set up the catkin workspace and VS code
 
-Regularly need to ensure your system is up-to-date and has the necessary packages for ROS:
+1. Regularly need to ensure your system is up-to-date and has the necessary packages for ROS:
 
 ```bash
 sudo apt update
@@ -192,7 +192,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-**1. Open the first terminal, instead of sourcing the below ROS path every time:**
+2. Open the first terminal, instead of sourcing the below ROS path every time:
 
 ```bash
 source /opt/ros/noetic/setup.bash
@@ -208,11 +208,13 @@ echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-**2. Install the essential dependencies one time:**
+3. Install the essential dependencies one time:
 
+```bash
 sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+```
 
-After all the above steps, try to run the below command to see if the ROS works correctly or not:
+4. After all the above steps, try to run the below command to see if the ROS works correctly or not:
 
 ```bash
 roscore
@@ -220,7 +222,7 @@ roscore
 
 Note: Please do not close this terminal as long as you working on the ROS platform.
 
-**3. Open the second terminal, create and initialize the catkin workspace:**
+5. Open the second terminal, create and initialize the catkin workspace:
 
 ```bash
 mkdir -p ~/catkin_ws/src
@@ -234,7 +236,7 @@ cd ~/catkin_ws
 catkin init
 ```
 
-**4. Clone GitHub repository:**
+6. Clone GitHub repository:
 
 Go to the src folder:
 
@@ -242,13 +244,13 @@ Go to the src folder:
 cd ~/catkin_ws/src
 ```
 
-Clone the repository:
+7. Clone the repository:
 
 ```bash
 git clone https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git
 ```
 
-**5. Build the workspace**
+8. Build the workspace
 
 Go to catkin_ws, run catkin_make:
 
@@ -260,19 +262,20 @@ cd ~/catkin_ws
 catkin_make
 ```
 
-**6. Open the third terminal, install vs code:**
+9. Open the third terminal, install vs code:
 
 ```bash
 sudo snap install code --classic
 ```
 
-**7. To open the VS code editor from the command line just run**
+10. To open the VS code editor from the command line just run:
 
 ```bash
 code .
 ```
 
-**8. After opening the VS code editor, try to open your cloned repository folder by browsing it**
+11. After opening the VS code editor, try to open your cloned repository folder by browsing it
+
 Now try to work in VS code for your programming life is easy.
 
 
@@ -281,7 +284,8 @@ Now try to work in VS code for your programming life is easy.
 
 If the USB or webcam feed did not display in the above steps, there are several troubleshooting steps you can follow to identify and resolve the issue.
 
-**1. Check Camera Detection**
+1. Check Camera Detection
+   
 First, ensure that the USB or webcam is properly detected by your system.
 
 a. Use v4l2-ctl to list video devices:
@@ -302,7 +306,7 @@ ls /dev/video*
 
 This should display video devices like /dev/video0, /dev/video1, etc. If no devices are listed, your system may not be detecting the webcam properly.
 
-**2. Check Webcam Permissions**
+2. Check Webcam Permissions
    
 If your webcam is detected but not accessible, there could be a permission issue.
 
@@ -316,7 +320,7 @@ sudo usermod -aG video $USER
 
 After running this command, log out and log back in for the changes to take effect.
 
-**3. Check for Camera Driver Issues**
+3. Check for Camera Driver Issues
 
 Sometimes, webcam drivers may not be properly loaded.
 
@@ -336,7 +340,7 @@ dmesg | grep video
 
 This will show kernel logs related to video devices, which might indicate if there are any issues with loading the camera driver.
 
-**4. Install or Reinstall Camera Software**
+4. Install or Reinstall Camera Software
 
 Ensure that the software required for your webcam is installed and working.
 
@@ -357,7 +361,7 @@ Then, run cheese again:
 cheese
 ```
 
-**5. Test with ffmpeg or mplayer**
+5. Test with ffmpeg or mplayer
 
 To bypass GUI tools and directly test the camera feed from the terminal, you can use ffmpeg or player.
 
@@ -383,7 +387,7 @@ mplayer tv:// -tv device=/dev/video0
 
 This should open a window with your webcam feed. Adjust device=/dev/videoX if your camera is on a different device.
 
-**6. Check for Hardware Issues**
+6. Check for Hardware Issues
 
 If none of the above steps work, there might be a hardware-related issue with your webcam or USB port:
 
@@ -391,7 +395,7 @@ If none of the above steps work, there might be a hardware-related issue with yo
  
  Test the webcam on another machine or operating system to rule out hardware failure.
 
-**7. Update System Drivers**
+7. Update System Drivers
 
 Ensure that all drivers are up to date:
 
@@ -405,7 +409,7 @@ sudo apt upgrade
 
 After running the updates, reboot your system and check if the webcam feed works.
 
-**8. To disable or modify the use of focus_auto in your ROS usb_cam launch file or camera configuration, follow these steps:**
+8. To disable or modify the use of focus_auto in your ROS usb_cam launch file or camera configuration, follow these steps:
 
 In the launch file (e.g., usb_cam_stream_publisher.launch), you need to adjust the parameters that control the camera settings.
 
@@ -443,7 +447,7 @@ roslaunch usb_cam_stream_publisher.launch
 
 This should prevent the error related to focus_auto if it's unsupported by your camera. If the focus_auto parameter isn't recognized, you can leave it out, as the node will ignore it.
 
-**9. Ti disable manually the use of focus_auto, follow these steps:**
+9. To disable manually the use of focus_auto, follow these steps:
 
  You can use the v4l2-ctl command to check if the camera supports this control and what its current value is. Run:
 
