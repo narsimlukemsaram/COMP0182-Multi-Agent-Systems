@@ -2,20 +2,24 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Task 1: Perform camera calibration (using Checkerboard)
+## Task 1: Perform Camera calibration (using Checkerboard)
 
-ROS use OpenCV for camera calibration but the format that it stores the data is different than OpenCV. Also, you need to know where to place the camera calibration files so ROS can find it and publish it (/home/<username>/.ros/camera_info/head_camera.yaml).
+ROS uses OpenCV for camera calibration but the format in which it stores the data differs from OpenCV. Also, you need to know where to place the camera calibration files so ROS can find and publish them (/home/<username>/.ros/camera_info/head_camera.yaml).
 
-1. First, you need to install the USB cam package from ROS and uvcdynctrl to disable autofocus, open a terminal and run the below:
+First, you can connect the Logitech C920 HD Pro camera to your laptop.
 
-```bash
-sudo apt-get install ros-noetic-usb-cam uvcdynctrl
-```
-
-2. Open a terminal and run the below and remain opened:
+1. Open the first terminal, and run the ROS master:
 
 ```bash
 roscore
+```
+
+Please keep this terminal open.
+
+2. Open the second terminal, install the USB cam package from ROS and uvcdynctrl to disable autofocus, open a terminal, and run the below:
+
+```bash
+sudo apt-get install ros-noetic-usb-cam uvcdynctrl
 ```
 
 3. Now, check if your camera autofocus status:
@@ -43,7 +47,7 @@ Listing available controls for device /dev/video0:
   Zoom, Absolute
 ```
 
-4. You can turn off the autofocus:
+4. If it is enabled, you can turn off the autofocus:
 
 ```bash
 uvcdynctrl --device=/dev/video0 --set='Focus, Auto' 0
@@ -55,25 +59,54 @@ check if the autofocus is off or not:
 uvcdynctrl --device=/dev/video0 --get='Focus, Auto'
 ```
 
-5. Publish the data from your camera, for example, via using usb_cam:
+5. Now, install camera calibration:
+
+```bash
+rosdep install camera_calibration
+```
+
+6. Publish the data from your camera, for example, via using usb_cam:
 
 ```bash
 rosrun usb_cam usb_cam_node
 ```
 
-6. Connect camera_calibration to the node publishing camera images: (node and topic name should be adjusted: image:=/usb_cam/image_raw camera:=/usb_cam) and a checkerboard with 0.02517-meter squares:
+7. In the third terminal, run rostopic list:
+
+```bash
+rostopic list
+
+/rosout
+/rosout_agg
+/usb_cam/camera_info
+/usb_cam/image_raw
+/usb_cam/image_raw/compressed
+/usb_cam/image_raw/compressed/parameter_descriptions
+/usb_cam/image_raw/compressed/parameter_updates
+/usb_cam/image_raw/compressedDepth
+/usb_cam/image_raw/compressedDepth/parameter_descriptions
+/usb_cam/image_raw/compressedDepth/parameter_updates
+/usb_cam/image_raw/theora
+/usb_cam/image_raw/theora/parameter_descriptions
+/usb_cam/image_raw/theora/parameter_updates
+```
+
+8. Open the fourth terminal, and connect camera_calibration to the node publishing camera images:
+   (node and topic name should be adjusted: image:=/usb_cam/image_raw
+                                            camera:=/usb_cam) and a checkerboard with
+                                            0.02517-meter squares:
 
 ```bash
 rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:=/usb_cam/image_raw camera:=/usb_cam --no-service-check
 ```
 
-7. After getting enough images click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
+9. After getting enough images click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
 
-/home/<<username>>/.ros/camera_info/head_camera.yaml
+/home/[username]/.ros/camera_info/head_camera.yaml
  
-8. Fix the calibration URL. Put the YAML file in the
+10. Fix the calibration URL. Put the YAML file in the
 
-/home/<<username>>/.ros/camera_info/head_camera.yaml
+/home/[username]/.ros/camera_info/head_camera.yaml
 
 
 **Install usb_cam ROS Package**
