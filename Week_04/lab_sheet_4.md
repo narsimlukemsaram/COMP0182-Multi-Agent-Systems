@@ -133,26 +133,26 @@ rqt_image_view
 
 In the viewer, select the topic /usb_cam/image_raw to see the camera feed.
 
-Note: Try to keep checkerboard in slightly oriented (45/90/135/180 degrees) and change it from clock-wise to anti clock-wise during calibration process. 
+Note: Try to keep the checkerboard slightly oriented (45/90/135/180 degrees) and change it from clockwise to anti-clockwise during the calibration process. 
 
 **References:**
 
-[1]. https://ros-developer.com/2017/04/23/camera-calibration-with-ros/
+[1]. https://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration/
 
-[2]. https://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration/
-
+[2]. https://ros-developer.com/2017/04/23/camera-calibration-with-ros/
 
 
 ## Task 2: Goal Pose using ArUco Markers (using USB Camera/Webcam)
 
-In the previous lab session, you should manage to recognize single/multiple aruco markers from your camera. Now combining this aruco finder function and the TurtleBot3 moving function, you can navigate the TurtleBot3 to a desired goal. The position of TurtleBot3 and the goal is expressed by those aruco markers separately. The combined function can be found in
+In the previous lab session, you should have managed to recognize single/multiple ArUco markers from your camera. Now combining this aruco finder function and the TurtleBot3 moving function, you can navigate the TurtleBot3 to a desired goal. The position of TurtleBot3 and the goal is expressed by those ArUco markers separately. The combined function can be found in
 [goal_pose.py](/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/scripts/goal_pose.py).
 
 Think about what other nodes you should launch before using it. 
 
-Hint: The script subscribes two topics: ``/id100/aruco_single/pose`` and ``/id101/aruco_single/pose``, and publish ``/cmd_vel``, and when you want to ``rosrun`` a node, you will need to give executble permission to it.
+Hint: The script subscribes two topics: ``/id100/aruco_single/pose`` and ``/id101/aruco_single/pose``, and publish ``/cmd_vel``, and when you want to ``rosrun`` a node, you will need to give executable permission to it.
 
 Desired outcome: successfully navigate your Turtlebot to a goal position.
+
 ## Task 3: SLAM/Map using Laser Distance Sensor and execute Goal Pose (using LDS/LiDAR)
 
 ### Run SLAM code
@@ -169,7 +169,7 @@ On your **Remote PC**, run ``roscore``
 roscore
 ```
 
-Still on **Remote PC**, open a new terminal and run SLAM node
+Still on **Remote PC**, open a new terminal and run the SLAM node
 ```bash
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_slam turtlebot3_slam.launch
@@ -177,7 +177,7 @@ roslaunch turtlebot3_slam turtlebot3_slam.launch
 This will take you to RViz, where the map, LiDAR, robot, etc are visualized.
 
 ### Run Teleoperation
-On your **Remote PC**, run the teleoperation node, control your TurtleBot3, exploring the lab and see the process of mapping
+On your **Remote PC**, run the teleoperation node, control your TurtleBot3, explore the lab, and see the process of mapping
 
 ```bash
 export TURTLEBOT3_MODEL=burger
@@ -187,23 +187,24 @@ Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop 
 
 ### Save Map
 
-In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data has been collected while it is traveling in last step
+In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data was collected while it is traveling in the last step:
 
 ```bash
 rosrun map_server map_saver -f ~/map
 ```
 
-The -f option specifies a folder location and a file name where files to be saved. With the above command, map.pgm and map.yaml will be saved in the home folder ~/(/home/${username}). 
+The -f option specifies a folder location and a file name where files are to be saved. With the above command, map.pgm and map.yaml will be saved in the home folder ~/(/home/${username}). 
 
+After you manage to get the map, try let the TurtleBot3 auto-navigate, following the instructions in
+[5. Navigation](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#run-navigation-nodes). 
 
 ## Task 4: Obstacle Avoidance during navigation (using LDS/LiDAR/Camera)
 
-After you manage to get the map, try let the TurtleBot3 auto-navigate, following the instructions in
-[5. Navigation](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#run-navigation-nodes). Don't forget to change the tab to ``noetic``
+The naive algorithm can be found in [Naive_Obstacle_Avoidance](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/naive_obstacle_avoidance/). 
 
+Note:
 
-
-
+Don't forget to change the tab to ``noetic``
 
 ==============================================================================
 
