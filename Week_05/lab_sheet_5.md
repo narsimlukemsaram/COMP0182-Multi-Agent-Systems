@@ -24,7 +24,7 @@ Please keep this terminal open.
 
 ## Task 2: Naive obstacle avoidance using LDS-02
 
-To run naive obstacle avoidance using LDS-02, please follow the below instructions: 
+To run naive obstacle avoidance on a single turtlebot using LDS-02, please follow the below instructions: 
 
 1. Open the first terminal on **Remote PC**, and run the ROS master:
 
@@ -36,7 +36,7 @@ Please keep this terminal open.
 
 2. Open second terminal, SSH to your TurtleBot3 from **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password.
   
-   Run the Bringup on **TurtleBot3 terminal**
+Run the Bringup on **TurtleBot3 terminal**:
 
 ```bash
 ssh ubuntu@{IP_ADDRESS_OF_TURTLEBOT3}
@@ -44,18 +44,16 @@ export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 
-3. Still on **Remote PC**, open third terminal and run the naive obstacle avoidance node
+3. Still on **Remote PC**, open third terminal and run the naive obstacle avoidance node:
    
 ```bash
 export TURTLEBOT3_MODEL=burger
-roslaunch naive_obstacle_avoidance.launch
+rosrun naive_obstacle_avoidance naive_obstacle_avoidance_node
 ```
-
-This will take you to RViz, where the map, LiDAR, robot, etc are visualized.
 
 ### Run Teleoperation
 
-On your **Remote PC**, run the teleoperation node, control your TurtleBot3, try to keep some obstacles in front of TyrtleBot3, and see the obstacle avoidance
+On your **Remote PC**, run the teleoperation node, control your TurtleBot3, try to keep some obstacles in front of TurtleBot3, and see the obstacle avoidance:
 
 ```bash
 export TURTLEBOT3_MODEL=burger
@@ -63,6 +61,7 @@ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 
 Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop the TurtleBot3.
+
 
 **References:**
 
