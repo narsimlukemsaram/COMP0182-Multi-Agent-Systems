@@ -71,14 +71,59 @@ Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop 
 
 ## Task 3: Auto navigation
 
-In the previous lab session, you should have managed to recognize single/multiple ArUco markers from your camera. Now combining this aruco finder function and the TurtleBot3 moving function, you can navigate the TurtleBot3 to a desired goal. The position of TurtleBot3 and the goal is expressed by those ArUco markers separately. The combined function can be found in
-[goal_pose.py](/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/scripts/goal_pose.py).
+In auto navigation, the camera detect the marker on top of the robot and the marker on the ground. The marker on the ground is the goal position and the application allow the robot to navigate from its original position to the goal position.
 
-Think about what other nodes you should launch before using it. 
+Firstly, the id number of ArUco markers being used need to be remember. In the example, marker on robot has ID 100 and marker on the ground has ID 101. Different ID's can be used with modification in the code in order to correctly detect and read marker positions.
 
-Hint: The script subscribes two topics: ``/id100/aruco_single/pose`` and ``/id101/aruco_single/pose``, and publish ``/cmd_vel``, and when you want to ``rosrun`` a node, you will need to give executable permission to it.
+1. Open the first terminal on **Remote PC**, and run the ROS master:
 
-Desired outcome: successfully navigate your Turtlebot to a goal position.
+```bash
+roscore
+```
+
+Please keep this terminal open.
+
+2. Open second terminal, SSH to your TurtleBot3 from **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password.
+  
+Run the Bringup on **TurtleBot3 terminal**:
+
+```bash
+ssh ubuntu@{IP_ADDRESS_OF_TURTLEBOT3}
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+```
+
+3. Still on **Remote PC**, open third terminal and run multiple aruco marker finder:
+   
+```bash
+export TURTLEBOT3_MODEL=burger
+roslaunch auto_aruco_marker_finder multiple_aruco_marker_finder.launch
+```
+
+4. Still on **Remote PC**, open fourth terminal and run rqt to check if markers are correctly detected:
+
+```bash
+export TURTLEBOT3_MODEL=burger
+rosrun rqt_gui rqt_gui
+```
+
+The rqt window shows a correct detection.
+
+5. Still on **Remote PC**, open fifth terminal and run:
+
+```bash
+export TURTLEBOT3_MODEL=burger
+rosrun auto_navigation goal_pose.py
+```
+
+Then the robot should be moving to the destination.
+
+If the robot is not moving and error occurs on the terminal, shutdown all terminal and repeat from step 1.
+
+**References:**
+
+[1] https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/.
+
 
 ## [Homework]: Multi-robot obstacle avoidance
 
