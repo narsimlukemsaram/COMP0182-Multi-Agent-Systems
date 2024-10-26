@@ -2,11 +2,23 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Task 1: Perform real single-robot planning/navigation
+## Task 1: Perform real single-robot navigation ()
 
-First, you can connect the Logitech C920 HD Pro camera to your laptop.
+In the previous lab session, you might have created a complete map of the test environment area in the IoT Lab arena and saved the map data to the local drive for this week's Navigation use. 
 
-1. Open the first terminal, and run the ROS master:
+The "map.pgm" or "map.yaml" will be saved in the home folder ~/(/home/${username}) of your laptop/Remote PC.
+
+The map uses a two-dimensional Occupancy Grid Map (OGM), which is commonly used in ROS. The saved map will look like the figure below, where the white area is a collision-free area while black area is an occupied and inaccessible area, and the gray area represents the unknown area. 
+
+The Navigation uses a map created by the SLAM. Please prepare a map before running the Navigation.
+
+Navigation is to move the robot from one location to the specified destination in a given environment. For this purpose, a map that contains geometry information of furniture, objects, and walls of the given environment is required. As described in the previous SLAM section, the map was created with the distance information obtained by the sensor and the pose information of the robot itself.
+
+Navigation enables a robot to move from the current pose to the designated goal pose on the map by using the map, the robot’s encoder, the IMU sensor, and the distance sensor. The procedure for performing this task is as follows.
+
+**1. Run Navigation Nodes**
+
+1. If roscore is not running on the Remote PC, run roscore in the first terminal. Skip this step if roscore is already running.
 
 ```bash
 roscore
@@ -14,11 +26,76 @@ roscore
 
 Please keep this terminal open.
 
+2. If the Bringup is not running on the TurtleBot3, launch the Bringup. Skip this step if you have launched bring-up previously.
+
+Open a second terminal from the Remote PC with Ctrl + Alt + T and connect to TurtleBot3 with its IP address. The default password is turtlebot. Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
+
+```bash
+$ ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_PI}
+$ export TURTLEBOT3_MODEL=${TB3_MODEL}
+$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+```
+
+3. Launch the Navigation
+
+Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
+
+```bash
+$ export TURTLEBOT3_MODEL=burger
+$ roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+```
+
+**Tip:**
+
+To avoid manually setting it every time, you can add this command to ~/.bashrc and source ~/.bashrc.
+
+The .bashrc file is automatically loaded when a terminal window is created.
+
+Example of defining TurtlBot3 Burger as a default model:
+
+```bash
+$ echo 'export TURTLEBOT3_MODEL=burger' >> ~/.bashrc
+$ source ~/.bashrc
+```
+
+**2. Estimate Initial Pose**
+
+Initial Pose Estimation must be performed before running the Navigation as this process initializes the AMCL parameters that are critical in Navigation. TurtleBot3 has to be correctly located on the map with the LDS sensor data that neatly overlaps the displayed map.
+
+1. Click the **2D Pose Estimate** button in the RViz menu.
+
+2. Click on the map where the actual robot is located and drag the large green arrow toward the direction where the robot is facing.
+
+3. Repeat steps 1 and 2 until the LDS sensor data is overlayed on the saved map.
+   
+4. Launch the keyboard teleoperation node to precisely locate the robot on the map.
+   
+```bash
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+
+5. Move the robot back and forth a bit to collect the surrounding environment information and narrow down the estimated location of the TurtleBot3 on the map which is displayed with tiny green arrows.
  
+6. Terminate the keyboard teleoperation node by entering Ctrl + C to the teleop node terminal in order to prevent different cmd_vel values are published from multiple nodes during Navigation.
+
+
+**3. Set Navigation Goal**
+
+1. Click the **2D Nav Goal** button in the RViz menu.
+
+2. Click on the map to set the destination of the robot and drag the green arrow toward the direction where the robot will be facing.
+   
+This green arrow is a marker that can specify the destination of the robot.
+
+The root of the arrow is the x, y coordinate of the destination, and the angle θ is determined by the orientation of the arrow.
+
+As soon as x, y, θ are set, TurtleBot3 will start moving to the destination immediately.
 
 **References:**
 
-[1]. https://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration/
+[1]. TurtleBot3 Navigation Example, https://www.youtube.com/watch?v=VYlMywwYALU/.
+
+[2]. Navigation, https://wiki.ros.org/navigation/.
 
 
 
