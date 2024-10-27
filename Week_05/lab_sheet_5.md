@@ -209,4 +209,5 @@ If the robot is not moving and error occurs on the terminal, shutdown all termin
 - [Task 1] Perform real single-robot planning/navigation
 - [Task 2] Naive obstacle avoidance using LDS-02
 - [Task 3] Auto navigation
-- [Homework] Multi-robot obstacle avoidance 
+- [Homework] Multi-robot obstacle avoidance
+- [update code] Update the code in multi-aruco marker finder.py
