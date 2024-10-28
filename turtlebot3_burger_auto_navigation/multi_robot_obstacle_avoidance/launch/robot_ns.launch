@@ -1,0 +1,8 @@
+<launch>
+  <arg name="my_ns"/>
+  <group ns="$(arg my_ns)">
+    <include file="$(find naive_obstacle_avoidance)/launch/naive_obstacle_avoidance.launch">
+        <arg name="namespace" value="$(arg my_ns)" /> 
+    </include>
+  </group>
+</launch>
