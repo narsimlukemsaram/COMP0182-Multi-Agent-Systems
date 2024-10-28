@@ -134,7 +134,7 @@ This green arrow is a marker that can specify the destination of the robot.
 
 The root of the arrow is the x, y coordinate of the destination, and the angle θ is determined by the orientation of the arrow.
 
-As soon as x, y, θ are set, T**urtleBot3 will start moving to the destination immediately**.
+As soon as x, y, θ are set, **TurtleBot3 will start moving to the destination immediately**.
 
 **References:**
 
@@ -143,7 +143,7 @@ As soon as x, y, θ are set, T**urtleBot3 will start moving to the destination i
 [2]. Navigation, https://wiki.ros.org/navigation/.
 
 
-## Task 3: Single-robot auto navigation
+## Task 3: Single-Robot Auto Navigation
 
 In auto navigation, the camera detect the marker on top of the robot and the marker on the ground. The marker on the ground is the goal position and the application allow the robot to navigate from its original position to the goal position.
 
@@ -167,7 +167,7 @@ export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 
-3. Still on **Remote PC**, open third terminal and run multiple aruco marker finder:
+3. On **Remote PC**, open third terminal and run multiple aruco marker finder:
    
 ```bash
 export TURTLEBOT3_MODEL=burger
@@ -183,6 +183,8 @@ rosrun rqt_gui rqt_gui
 
 The rqt window shows a correct detection.
 
+![image.png](imgs/navigation.png)
+
 5. Still on **Remote PC**, open fifth terminal and run:
 
 ```bash
@@ -196,14 +198,14 @@ If the robot is not moving and error occurs on the terminal, shutdown all termin
 
 **References:**
 
-[1] https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/.
+[1] https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/turtlebot3_burger_auto_navigation/auto_navigation/.
 
-## [Homework]: Multi-robot auto navigation
+## [Homework]: Multi-Robot Auto Navigation
 
 
 ## To-Do List
 
 - [Task 1] SLAM/Mapping
 - [Task 2] Navigation
-- [Task 3] Single-robot auto navigation
-- [Homework] Multi-robot auto navigation
+- [Task 3] Single-Robot Auto Navigation
+- [Homework] Multi-Robot Auto Navigation
