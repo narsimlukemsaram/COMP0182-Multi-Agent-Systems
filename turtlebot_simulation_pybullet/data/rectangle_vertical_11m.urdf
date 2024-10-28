@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+ <robot name="myfirst">
+   <link name="base_link">
+     <visual>
+          <material name="paperboardyellow"/>
+
+      <origin rpy="0 0 1.57079632679" xyz="0 0 0"/>
+       <geometry>
+         <box size="10 0.3 1"/>
+       </geometry>
+     </visual>
+     <collision>
+      <origin rpy="0 0 1.57079632679" xyz="0 0 0"/>
+      <geometry>
+	 	<box size="10 0.3 1"/>
+      </geometry>
+    </collision>
+   </link>
+   <material name="paperboardyellow" >
+    <color rgba="0.96078431 0.79607843 0.49019608 1.0" />
+  </material>
+</robot>

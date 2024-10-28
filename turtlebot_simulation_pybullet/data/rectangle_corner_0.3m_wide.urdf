@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+ <robot name="myfirst">
+   <link name="horizontal">
+     <visual>
+       <material name="paperboardyellow"/>
+      <origin rpy="0 0 0" xyz="-0.5 0 0"/>
+       <geometry>
+         <box size="1 0.3 1"/>
+       </geometry>
+     </visual>
+     <collision>
+      <origin rpy="0 0 0" xyz="-0.5 0 0"/>
+      <geometry>
+	 	<box size="1 0.3 1"/>
+      </geometry>
+    </collision>
+   </link>
+
+   <link name="vertical">
+     <visual>
+     <material name="paperboardyellow"/>
+      <origin rpy="0 0 1.57079632679" xyz="0 -0.25 0"/>
+       <geometry>
+         <box size="0.5 0.3 1"/>
+       </geometry>
+     </visual>
+     <collision>
+      <origin rpy="0 0 1.57079632679" xyz="0 -0.25 0"/>
+      <geometry>
+	 	<box size="0.5 0.3 1"/>
+      </geometry>
+    </collision>
+   </link>
+
+   <joint name="hor_ver" type="fixed">
+     <parent link="horizontal"/>
+     <child link="vertical"/>
+     <origin xyz="0 0 0"/>
+   </joint>
+
+   <material name="steelgrey" >
+    <color rgba="0.43529411764705883 0.5098039215686274 0.5411764705882353 1.0" />
+  </material>
+  <material name="paperboardyellow" >
+    <color rgba="0.96078431 0.79607843 0.49019608 1.0" />
+  </material>
+</robot>

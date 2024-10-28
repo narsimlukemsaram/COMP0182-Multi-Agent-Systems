@@ -1,0 +1,196 @@
+agents:
+- goal:
+  - 0
+  - 5
+  name: 1
+  start:
+  - 0
+  - 0
+- goal:
+  - 4
+  - 5
+  name: 2
+  start:
+  - 0
+  - 1
+- goal:
+  - 7
+  - 4
+  name: 3
+  start:
+  - 3
+  - 0
+- goal:
+  - 9
+  - 0
+  name: 4
+  start:
+  - 0
+  - 2
+- goal:
+  - 13
+  - 0
+  name: 5
+  start:
+  - 3
+  - 2
+- goal:
+  - 15
+  - 4
+  name: 6
+  start:
+  - 3
+  - 1
+
+map:
+  dimensions:
+  - 16
+  - 6
+  obstacles:
+    horizontal:
+      - !!python/tuple
+        - 0
+        - 4
+      - !!python/tuple
+        - 1
+        - 4
+
+      - !!python/tuple
+        - 4
+        - 4
+
+      - !!python/tuple
+        - 7
+        - 3
+
+      - !!python/tuple
+        - 8
+        - 1
+      - !!python/tuple
+        - 9
+        - 1
+
+      - !!python/tuple
+        - 11
+        - 3
+
+      - !!python/tuple
+        - 13
+        - 3
+      - !!python/tuple
+        - 14
+        - 3
+      - !!python/tuple
+        - 15
+        - 3
+
+      - !!python/tuple
+        - 13
+        - 1
+      - !!python/tuple
+        - 14
+        - 1
+
+    vertical:
+      - !!python/tuple
+        - 4
+        - -0.4
+      - !!python/tuple
+        - 4
+        - 0.6
+      - !!python/tuple
+        - 4
+        - 1.6
+
+
+
+
+      - !!python/tuple
+        - 3
+        - 5
+      - !!python/tuple
+        - 6
+        - 5
+      - !!python/tuple
+        - 6
+        - 4
+      - !!python/tuple
+        - 8
+        - 4
+
+      - !!python/tuple
+        - 10
+        - 0
+
+      - !!python/tuple
+        - 10
+        - 5
+      - !!python/tuple
+        - 10
+        - 4
+
+      - !!python/tuple
+        - 12
+        - 0
+
+    top_left_corner:
+      - !!python/tuple
+        - 7
+        - 1
+      - !!python/tuple
+        - 12
+        - 1
+    top_right_corner:
+      - !!python/tuple
+        - 10
+        - 1
+
+    bottom_left_corner:
+      - !!python/tuple
+        - 3
+        - 4
+      - !!python/tuple
+        - 6
+        - 3
+      - !!python/tuple
+        - 10
+        - 3
+    bottom_right_corner:
+      - !!python/tuple
+        - 8
+        - 3
+    horizontal_half:
+
+
+      - !!python/tuple
+        - 15.75
+        - 3
+    vertical_half:
+      - !!python/tuple
+        - 3
+        - 5.75
+      - !!python/tuple
+        - 6
+        - 5.75
+      - !!python/tuple
+        - 10
+        - -0.75
+
+      - !!python/tuple
+        - 10
+        - 5.75
+
+      - !!python/tuple
+        - 12
+        - -0.75
+
+
+
+
+
+
+
+
+
+
+

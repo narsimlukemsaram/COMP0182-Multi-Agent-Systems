@@ -1,0 +1,32 @@
+agents:
+- goal:
+  - 4
+  - 4
+  name: 1
+  start:
+  - 0
+  - 0
+- goal:
+  - 3
+  - 3
+  name: 2
+  start:
+  - 2
+  - 0
+map:
+  dimensions:
+  - 5
+  - 5
+  obstacles:
+  - !!python/tuple
+    - 3
+    - 4
+  - !!python/tuple
+    - 2
+    - 1
+  - !!python/tuple
+    - 4
+    - 2
+  - !!python/tuple
+    - 1
+    - 3
