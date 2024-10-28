@@ -10,7 +10,49 @@ The "map.pgm" or "map.yaml" will be saved in the home folder ~/(/home/${user
 
 The map uses a two-dimensional Occupancy Grid Map (OGM), which is commonly used in ROS. The saved map will look like the figure below, where the white area is a collision-free area while black area is an occupied and inaccessible area, and the gray area represents the unknown area. 
 
+![a]()
+
 The Navigation uses a map created by the SLAM. Please prepare a map before running the Navigation, if not done ine previous lab session.
+
+### Run SLAM code
+
+SSH to your TurtleBot3 from your **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**
+```bash
+ssh ubuntu@{IP_ADDRESS_OF_TURTLEBOT3}
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+```
+
+On your **Remote PC**, run ``roscore``
+```bash
+roscore
+```
+
+Still on **Remote PC**, open a new terminal and run the SLAM node
+```bash
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_slam turtlebot3_slam.launch
+```
+This will take you to RViz, where the map, LiDAR, robot, etc are visualized.
+
+### Run Teleoperation
+On your **Remote PC**, run the teleoperation node, control your TurtleBot3, explore the lab, and see the process of mapping
+
+```bash
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop the TurtleBot3.
+
+### Save Map
+
+In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data was collected while it is traveling in the last step:
+
+```bash
+rosrun map_server map_saver -f ~/map
+```
+
+The -f option specifies a folder location and a file name where files are to be saved. With the above command, map.pgm and map.yaml will be saved in the home folder ~/(/home/${username}).
 
 ## Task 2: Navigation
 
@@ -100,10 +142,7 @@ As soon as x, y, θ are set, TurtleBot3 will start moving to the destination imm
 [2]. Navigation, https://wiki.ros.org/navigation/.
 
 
-
-
-
-## Task 3: Auto navigation
+## Task 3: Single-robot auto navigation
 
 In auto navigation, the camera detect the marker on top of the robot and the marker on the ground. The marker on the ground is the goal position and the application allow the robot to navigate from its original position to the goal position.
 
@@ -158,13 +197,12 @@ If the robot is not moving and error occurs on the terminal, shutdown all termin
 
 [1] https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/.
 
-## [Homework]: Multi-robot obstacle avoidance
+## [Homework]: Multi-robot auto navigation
 
 
 ## To-Do List
 
-- [Task 1] Perform real single-robot planning/navigation
-- [Task 2] Naive obstacle avoidance using LDS-02
-- [Task 3] Auto navigation
-- [Homework] Multi-robot obstacle avoidance
-- [update code] Update the code in multi-aruco marker finder.py
+- [Task 1] SLAM/Mapping
+- [Task 2] Navigation
+- [Task 3] Single-robot auto navigation
+- [Homework] Multi-robot auto navigation
