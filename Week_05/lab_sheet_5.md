@@ -10,9 +10,9 @@ The "map.pgm" or "map.yaml" will be saved in the home folder ~/(/home/${user
 
 The map uses a two-dimensional Occupancy Grid Map (OGM), which is commonly used in ROS. The saved map will look like the figure below, where the white area is a collision-free area while black area is an occupied and inaccessible area, and the gray area represents the unknown area. 
 
-![a]()
+![image.png](imgs/map.png)
 
-The Navigation uses a map created by the SLAM. Please prepare a map before running the Navigation, if not done ine previous lab session.
+The Navigation uses a map created by the SLAM. If you have already saved the map file in our previous lab session, please proceed to **Task 2: Navigation**. If not done in the previous lab session, please prepare a map before running the Navigation.
 
 ### Run SLAM code
 
