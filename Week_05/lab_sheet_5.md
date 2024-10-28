@@ -2,7 +2,7 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Task 1: Perform real single-robot navigation
+## Task 1: SLAM/Mapping
 
 In the previous lab session, you might have created a complete map of the test environment area in the IoT Lab arena and saved the map data to the local drive for this week's Navigation use. 
 
@@ -10,7 +10,9 @@ The "map.pgm" or "map.yaml" will be saved in the home folder ~/(/home/${user
 
 The map uses a two-dimensional Occupancy Grid Map (OGM), which is commonly used in ROS. The saved map will look like the figure below, where the white area is a collision-free area while black area is an occupied and inaccessible area, and the gray area represents the unknown area. 
 
-The Navigation uses a map created by the SLAM. Please prepare a map before running the Navigation.
+The Navigation uses a map created by the SLAM. Please prepare a map before running the Navigation, if not done ine previous lab session.
+
+## Task 2: Navigation
 
 Navigation is to move the robot from one location to the specified destination in a given environment. For this purpose, a map that contains geometry information of furniture, objects, and walls of the given environment is required. As described in the previous SLAM section, the map was created with the distance information obtained by the sensor and the pose information of the robot itself.
 
@@ -99,51 +101,6 @@ As soon as x, y, θ are set, TurtleBot3 will start moving to the destination imm
 
 
 
-## Task 2: Naive obstacle avoidance using LDS-02
-
-To run naive obstacle avoidance on a single turtlebot using LDS-02, please follow the below instructions: 
-
-1. Open the first terminal on **Remote PC**, and run the ROS master:
-
-```bash
-roscore
-```
-
-Please keep this terminal open.
-
-2. Open second terminal, SSH to your TurtleBot3 from **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password.
-  
-Run the Bringup on **TurtleBot3 terminal**:
-
-```bash
-ssh ubuntu@{IP_ADDRESS_OF_TURTLEBOT3}
-export TURTLEBOT3_MODEL=burger
-roslaunch turtlebot3_bringup turtlebot3_robot.launch
-```
-
-3. Still on **Remote PC**, open third terminal and run the naive obstacle avoidance node:
-   
-```bash
-export TURTLEBOT3_MODEL=burger
-rosrun naive_obstacle_avoidance naive_obstacle_avoidance_node
-```
-
-### Run Teleoperation
-
-On your **Remote PC**, run the teleoperation node, control your TurtleBot3, try to keep some obstacles in front of TurtleBot3, and see the obstacle avoidance:
-
-```bash
-export TURTLEBOT3_MODEL=burger
-roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
-```
-
-Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop the TurtleBot3.
-
-
-**References:**
-
-[1] https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/naive_obstacle_avoidance/ 
-
 
 
 ## Task 3: Auto navigation
@@ -201,8 +158,8 @@ If the robot is not moving and error occurs on the terminal, shutdown all termin
 
 [1] https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/.
 
-
 ## [Homework]: Multi-robot obstacle avoidance
+
 
 ## To-Do List
 
