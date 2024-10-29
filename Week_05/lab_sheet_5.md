@@ -188,6 +188,7 @@ The rqt window shows a correct detection.
 5. Still on **Remote PC**, open fifth terminal and run:
 
 ```bash
+chmod +x <path_to_goal_pose.py>
 export TURTLEBOT3_MODEL=burger
 rosrun auto_navigation goal_pose.py
 ```
