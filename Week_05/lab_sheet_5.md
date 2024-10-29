@@ -16,7 +16,15 @@ The Navigation uses a map created by the SLAM. If you have already saved the map
 
 ### Run SLAM code
 
-SSH to your TurtleBot3 from your **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**
+1. Open the first terminal on the Remote PC, and run the ROS master:
+   
+```bash
+roscore
+```
+
+Please keep this terminal open.
+
+2. Open the second terminal on the Remote PC, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**
 
 ```bash
 ssh ubuntu@{IP_ADDRESS_OF_TURTLEBOT3}
@@ -24,30 +32,29 @@ export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 
-On your **Remote PC**, run ``roscore``
-```bash
-roscore
-```
-
-Still on **Remote PC**, open a new terminal and run the SLAM node
+3. On **Remote PC**, open the third terminal and run the SLAM node:
+   
 ```bash
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_slam turtlebot3_slam.launch
 ```
+
 This will take you to RViz, where the map, LiDAR, robot, etc are visualized.
 
 ### Run Teleoperation
-On your **Remote PC**, run the teleoperation node, control your TurtleBot3, explore the lab, and see the process of mapping
+
+4. On **Remote PC**, open the fourth terminal and run the teleoperation node, control your TurtleBot3, explore the lab arena, and see the process of mapping:
 
 ```bash
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
-Press a, w, x, d to move TurtleBot3 around the lab. At the end, press s to stop the TurtleBot3.
+
+Press a, w, x, and d to move TurtleBot3 around the lab. At the end, press s to stop the TurtleBot3.
 
 ### Save Map
 
-In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data was collected while it is traveling in the last step:
+5. On **Remote PC**, open the fifth terminal and save the map. In order to let the TurtleBot3 auto-navigation in the scene, you need to have a global map. The map data was collected while it was traveling in the last step:
 
 ```bash
 rosrun map_server map_saver -f ~/map
@@ -61,7 +68,7 @@ Navigation is to move the robot from one location to the specified destination i
 
 Navigation enables a robot to move from the current pose to the designated goal pose on the map by using the map, the robot’s encoder, the IMU sensor, and the distance sensor. The procedure for performing this task is as follows.
 
-**1. Run Navigation Nodes**
+**1. Run Navigation Node**
 
 1. If roscore is not running on the Remote PC, run roscore in the first terminal. Skip this step if roscore is already running.
 
@@ -73,7 +80,9 @@ Please keep this terminal open.
 
 2. If the Bringup is not running on the TurtleBot3, launch the Bringup. Skip this step if you have launched bring-up previously.
 
-Open a second terminal from the Remote PC with Ctrl + Alt + T and connect to TurtleBot3 with its IP address. The default password is **turtlebot**. Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
+Open the second terminal on the Remote PC, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**:
+
+Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
 
 ```bash
 $ ssh ubuntu@{IP_ADDRESS_OF_TURTLEBOT3}
@@ -81,7 +90,7 @@ $ export TURTLEBOT3_MODEL=${TB3_MODEL}
 $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 
-3. Launch the Navigation
+3. On **Remote PC**, open the third terminal and launch the Navigation:
 
 Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
 
@@ -113,7 +122,7 @@ Initial **Pose Estimation** must be performed before running the **Navigation** 
 
 3. Repeat steps 1 and 2 **until the LDS sensor data is overlayed on the saved map**.
    
-4. Launch the keyboard teleoperation node **to precisely locate the robot on the map**.
+4. Launch the keyboard teleoperation node **to precisely locate the robot on the map**. Skip this step if teleoperation node is already running.
    
 ```bash
 $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
@@ -121,7 +130,7 @@ $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
 5. Move the robot back and forth a bit to collect the surrounding environment information and narrow down the estimated location of the TurtleBot3 on the map which is **displayed with tiny green arrows**.
  
-6. Terminate the keyboard teleoperation node by entering Ctrl + C to the teleop node terminal **in order to prevent different cmd_vel values are published from multiple nodes** during Navigation.
+6. Terminate the keyboard teleoperation node by entering Ctrl + C to the teleoperation node terminal **in order to prevent different cmd_vel values are published from multiple nodes** during Navigation.
 
 
 **3. Set Navigation Goal**
@@ -145,11 +154,11 @@ As soon as x, y, θ are set, **TurtleBot3 will start moving to the destination i
 
 ## Task 3: Single-Robot Auto Navigation
 
-In auto navigation, the camera detect the marker on top of the robot and the marker on the ground. The marker on the ground is the goal position and the application allow the robot to navigate from its original position to the goal position.
+In auto navigation, the camera detects the marker on top of the robot and the marker on the ground. The marker on the ground is the goal position and the application allows the robot to navigate from its original position to the goal position.
 
-Firstly, the id number of ArUco markers being used need to be remember. In the example, marker on robot has ID 100 and marker on the ground has ID 101. Different ID's can be used with modification in the code in order to correctly detect and read marker positions.
+Firstly, the ID number of the ArUco markers being used needs to be remembered. In the example, the marker on the robot has ID 100 and the marker on the ground has ID 101. Different IDs can be used with modifications in the code to correctly detect and read marker positions.
 
-1. Open the first terminal on **Remote PC**, and run the ROS master:
+1. If roscore is not running on the Remote PC, run roscore in the first terminal. Skip this step if roscore is already running.
 
 ```bash
 roscore
@@ -157,8 +166,10 @@ roscore
 
 Please keep this terminal open.
 
-2. Open second terminal, SSH to your TurtleBot3 from **Remote PC**, with "**ubuntu**" as username and "**turtlebot**" as password.
-  
+2. If the Bringup is not running on the TurtleBot3, launch the Bringup. Skip this step if you have launched bring-up previously.
+
+Open the second terminal on the Remote PC, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. 
+
 Run the Bringup on **TurtleBot3 terminal**:
 
 ```bash
@@ -167,7 +178,7 @@ export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 
-3. On **Remote PC**, open third terminal and run multiple aruco marker finder:
+3. On **Remote PC**, open the third terminal and run multiple aruco marker finder:
    
 ```bash
 export TURTLEBOT3_MODEL=burger
