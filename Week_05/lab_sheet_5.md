@@ -154,6 +154,8 @@ As soon as x, y, θ are set, **TurtleBot3 will start moving to the destination i
 
 ## Task 3: Single-Robot Auto Navigation
 
+First, you connect the Logitech C920 HD Pro camera to **Remote PC**/laptop. 
+
 In auto navigation, the camera detects the marker on top of the robot and the marker on the ground. The marker on the ground is the goal position and the application allows the robot to navigate from its original position to the goal position.
 
 Firstly, the ID number of the ArUco markers being used needs to be remembered. In the example, the marker on the robot has ID 100 and the marker on the ground has ID 101. Different IDs can be used with modifications in the code to correctly detect and read marker positions.
@@ -231,7 +233,7 @@ roslaunch usb_cam_stream_publisher.launch video_device:=/dev/video2 image_width:
 -->
 
 <launch>
-<arg name="video_device" default="/dev/video**2**" /> 
+<arg name="video_device" default="/dev/video2" /> <!-- video2 for Logitech C920 HD Pro Camera  -->
 <arg name="image_width" default="640" />
 <arg name="image_height" default="480" />
 
@@ -243,7 +245,7 @@ roslaunch usb_cam_stream_publisher.launch video_device:=/dev/video2 image_width:
 	<param name="pixel_format" value="mjpeg" />
 	<param name="camera_frame_id" value="usb_cam" />
 	<param name="io_method" value="mmap"/>
-   **<param name="focus_auto" value="0" />** <!-- Disable autofocus -->
+        <param name="focus_auto" value="0" />  <!-- Disable autofocus -->
 </node>
 </launch>
 ```
@@ -253,7 +255,7 @@ roslaunch usb_cam_stream_publisher.launch video_device:=/dev/video2 image_width:
 ```bash
 <launch>
 
-<arg name="video_device" default="/dev/video**2**" /> 
+<arg name="video_device" default="/dev/video2 />  <!-- video2 for Logitech C920 HD Pro Camera  -->
 <arg name="image_width" default="640" />
 <arg name="image_height" default="480" />
 
@@ -264,7 +266,7 @@ roslaunch usb_cam_stream_publisher.launch video_device:=/dev/video2 image_width:
     <param name="pixel_format" value="mjpeg" />
     <param name="camera_frame_id" value="usb_cam" />
     <param name="io_method" value="mmap"/>
-    **<param name="focus_auto" value="0" />** <!-- Disable autofocus -->
+    <param name="focus_auto" value="0" /> <!-- Disable autofocus -->
 </node>
 
 <!-- launch 2 auto_aruco_marker_finder with topic suffix id100 and id101  -->
