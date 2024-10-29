@@ -25,9 +25,9 @@ sudo apt-get install ros-noetic-usb-cam uvcdynctrl
 3. Now, check if your camera autofocus status:
 
 ```bash
-uvcdynctrl --device=/dev/video0 --clist
+uvcdynctrl --device=/dev/video2 --clist
 
-Listing available controls for device /dev/video0:
+Listing available controls for device /dev/video2:
   Brightness
   Contrast
   Saturation
@@ -50,13 +50,13 @@ Listing available controls for device /dev/video0:
 4. If it is enabled, you can turn off the autofocus:
 
 ```bash
-uvcdynctrl --device=/dev/video0 --set='Focus, Auto' 0
+uvcdynctrl --device=/dev/video2 --set='Focus, Auto' 0
 ```
 
 check if the autofocus is off or not:
 
 ```bash
-uvcdynctrl --device=/dev/video0 --get='Focus, Auto'
+uvcdynctrl --device=/dev/video2 --get='Focus, Auto'
 ```
 
 5. Now, install camera calibration:
@@ -227,7 +227,7 @@ v4l2-ctl --list-devices
 
 This command should list all connected video devices, including the webcam. 
 
-If /dev/video0 is not listed, try checking other video devices like /dev/video1, /dev/video2, etc.
+If /dev/video2 is not listed, try checking other video devices like /dev/video0, /dev/video1, etc.
 
 b. Check for video device files:
 
@@ -295,7 +295,7 @@ To bypass GUI tools and directly test the camera feed from the terminal, you can
 a. Test with ffmpeg:
 
 ```bash
-ffmpeg -f v4l2 -i /dev/video0 -vframes 1 out.jpg
+ffmpeg -f v4l2 -i /dev/video2 -vframes 1 out.jpg
 ```
 
 This command will capture a single frame from the webcam and save it as out.jpg in the current directory. If successful, it means the camera is working.
@@ -309,7 +309,7 @@ sudo apt install player
 ```
 
 ```bash
-mplayer tv:// -tv device=/dev/video0
+mplayer tv:// -tv device=/dev/video2
 ```
 
 This should open a window with your webcam feed. Adjust device=/dev/videoX if your camera is on a different device.
@@ -356,7 +356,7 @@ Example of how your node might look after adding the focus control:
 
 ```bash
 <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
-  <param name="video_device" value="/dev/video0" />
+  <param name="video_device" value="/dev/video2" />
   <param name="image_width" value="640" />
   <param name="image_height" value="480" />
   <param name="pixel_format" value="mjpeg" />
