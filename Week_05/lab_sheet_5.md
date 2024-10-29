@@ -2,7 +2,7 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Task 1: SLAM/Mapping
+## Task 1: Mapping
 
 In the previous lab session, you might have created a complete map of the test environment area in the IoT Lab arena and saved the map data to the local drive for this week's Navigation use. 
 
@@ -16,7 +16,7 @@ The Navigation uses a map created by the SLAM. If you have already saved the map
 
 ### Run SLAM code
 
-1. Open the first terminal on the Remote PC, and run the ROS master:
+1. Open the first terminal on the **Remote PC**, and run the ROS master:
    
 ```bash
 roscore
@@ -24,7 +24,7 @@ roscore
 
 Please keep this terminal open.
 
-2. Open the second terminal on the Remote PC, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**
+2. Open the second terminal on the **Remote PC**, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**
 
 ```bash
 ssh ubuntu@{IP_ADDRESS_OF_TURTLEBOT3}
@@ -70,7 +70,7 @@ Navigation enables a robot to move from the current pose to the designated goal 
 
 **1. Run Navigation Node**
 
-1. If roscore is not running on the Remote PC, run roscore in the first terminal. Skip this step if roscore is already running.
+1. If roscore is not running on the **Remote PC**, run roscore in the first terminal. Skip this step if roscore is already running.
 
 ```bash
 roscore
@@ -80,7 +80,7 @@ Please keep this terminal open.
 
 2. If the Bringup is not running on the TurtleBot3, launch the Bringup. Skip this step if you have launched bring-up previously.
 
-Open the second terminal on the Remote PC, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**:
+Open the second terminal on the **Remote PC**, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. Run the Bringup on **TurtleBot3 terminal**:
 
 Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
 
@@ -158,7 +158,7 @@ In auto navigation, the camera detects the marker on top of the robot and the ma
 
 Firstly, the ID number of the ArUco markers being used needs to be remembered. In the example, the marker on the robot has ID 100 and the marker on the ground has ID 101. Different IDs can be used with modifications in the code to correctly detect and read marker positions.
 
-1. If roscore is not running on the Remote PC, run roscore in the first terminal. Skip this step if roscore is already running.
+1. If roscore is not running on the **Remote PC**, run roscore in the first terminal. Skip this step if roscore is already running.
 
 ```bash
 roscore
@@ -168,7 +168,7 @@ Please keep this terminal open.
 
 2. If the Bringup is not running on the TurtleBot3, launch the Bringup. Skip this step if you have launched bring-up previously.
 
-Open the second terminal on the Remote PC, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. 
+Open the second terminal on the **Remote PC**, SSH to your TurtleBot3 with "**ubuntu**" as username and "**turtlebot**" as password. 
 
 Run the Bringup on **TurtleBot3 terminal**:
 
@@ -199,14 +199,91 @@ The rqt window shows a correct detection.
 5. Still on **Remote PC**, open fifth terminal and run:
 
 ```bash
-chmod +x <path_to_goal_pose.py>
+cd catkin_ws/src/COMP0182-Multi-Agent-Systems/turtlebot3_burger_auto_navigation/auto_navigation/scripts 
+chmod +x goal_pose.py
+export TURTLEBOT3_MODEL=burger
+rosrun auto_navigation goal_pose.py
+```
+
+5. Still on **Remote PC**, open sixth terminal and run:
+
+```bash
 export TURTLEBOT3_MODEL=burger
 rosrun auto_navigation goal_pose.py
 ```
 
 Then the robot should be moving to the destination.
 
-If the robot is not moving and error occurs on the terminal, shutdown all terminal and repeat from step 1.
+If the robot is not moving and error occurs on the terminal, please follow the below troubleshoot suggestions.
+
+==============================================================================
+
+## Troubleshoot / Suggestions
+
+==============================================================================
+
+1. Go to the folder and open the usb_cam_stream_publisher.launch file: catkin_ws/src/COMP0182-Multi-Agent-Systems/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/usb_cam_stream_publisher.launch. Example of how your node might look after changing video and changing the auto focus control:
+
+```bash
+<!--
+Example of run:
+roslaunch usb_cam_stream_publisher.launch video_device:=/dev/video2 image_width:=640 image_height:=480
+-->
+
+<launch>
+<arg name="video_device" default="/dev/video**2**" /> 
+<arg name="image_width" default="640" />
+<arg name="image_height" default="480" />
+
+
+<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+	<param name="video_device" value="$(arg video_device)" />
+	<param name="image_width" value="$(arg image_width)" />
+	<param name="image_height" value="$(arg image_height)"/>
+	<param name="pixel_format" value="mjpeg" />
+	<param name="camera_frame_id" value="usb_cam" />
+	<param name="io_method" value="mmap"/>
+   **<param name="focus_auto" value="0" />** <!-- Disable autofocus -->
+</node>
+</launch>
+```
+
+2. Go to the folder and open the multiple_aruco_marker_finder.launch file: catkin_ws/src/COMP0182-Multi-Agent-Systems/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/multiple_aruco_marker_finder.launch. Example of how your node might look after changing it:
+
+```bash
+<launch>
+
+<arg name="video_device" default="/dev/video**2**" /> 
+<arg name="image_width" default="640" />
+<arg name="image_height" default="480" />
+
+<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="$(arg video_device)" />
+    <param name="image_width" value="$(arg image_width)" />
+    <param name="image_height" value="$(arg image_height)"/>
+    <param name="pixel_format" value="mjpeg" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+    **<param name="focus_auto" value="0" />** <!-- Disable autofocus -->
+</node>
+
+<!-- launch 2 auto_aruco_marker_finder with topic suffix id100 and id101  -->
+<group ns="id100">
+    <include file="$(find auto_aruco_marker_finder)/launch/aruco_marker_finder.launch">
+    <arg name="markerId" value="100"/>
+    </include>
+</group>
+    
+<group ns="id101">
+    <include file="$(find auto_aruco_marker_finder)/launch/aruco_marker_finder.launch">
+    <arg name="markerId" value="101"/>
+    </include>
+</group>
+</launch>
+```
+
+Save the launch file and try again Step 3.
+
 
 **References:**
 
@@ -217,7 +294,7 @@ If the robot is not moving and error occurs on the terminal, shutdown all termin
 
 ## To-Do List
 
-- [Task 1] SLAM/Mapping
+- [Task 1] Mapping
 - [Task 2] Navigation
 - [Task 3] Single-Robot Auto Navigation
 - [Homework] Multi-Robot Auto Navigation
