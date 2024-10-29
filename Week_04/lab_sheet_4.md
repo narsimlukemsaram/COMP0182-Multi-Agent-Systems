@@ -108,31 +108,6 @@ rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:
 
 /home/[username]/.ros/camera_info/head_camera.yaml
 
-
-**Install usb_cam ROS Package**
-
-1. The usb_cam package is commonly used in ROS to interface with USB cameras or webcams.
-
-```bash
-sudo apt install ros-noetic-usb-cam
-```
-
-**To view the camera feed in ROS, you can use rqt_image_view:**
-
-2. Install the necessary tools:
-
-```bash
-sudo apt install ros-noetic-rqt-image-view
-```
-
-3. Run the image viewer:
-
-```bash
-rqt_image_view
-```
-
-In the viewer, select the topic /usb_cam/image_raw to see the camera feed.
-
 Note: Try to keep the checkerboard slightly oriented (45/90/135/180 degrees) and change it from clockwise to anti-clockwise during the calibration process. 
 
 **References:**
@@ -145,7 +120,7 @@ Note: Try to keep the checkerboard slightly oriented (45/90/135/180 degrees) and
 ## Task 2: Goal Pose using ArUco Markers (using USB Camera/Webcam)
 
 In the previous lab session, you should have managed to recognize single/multiple ArUco markers from your camera. Now combining this aruco finder function and the TurtleBot3 moving function, you can navigate the TurtleBot3 to a desired goal. The position of TurtleBot3 and the goal is expressed by those ArUco markers separately. The combined function can be found in
-[goal_pose.py](/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/scripts/goal_pose.py).
+[goal_pose.py](turtlebot3_burger_auto_navigation/auto_navigation/scripts/goal_pose.py).
 
 Think about what other nodes you should launch before using it. 
 
@@ -200,7 +175,7 @@ After you manage to get the map, try let the TurtleBot3 auto-navigate, following
 
 ## Task 4: Obstacle Avoidance during navigation (using LDS/LiDAR/Camera)
 
-The naive algorithm can be found in [Naive_Obstacle_Avoidance](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/Week_03/turtlebot3_burger_auto_navigation/naive_obstacle_avoidance/). 
+The naive algorithm can be found in [Naive_Obstacle_Avoidance](https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems/tree/main/turtlebot3_burger_auto_navigation/naive_obstacle_avoidance/). 
 
 Note:
 
@@ -212,105 +187,29 @@ Don't forget to change the tab to ``noetic``
 
 ==============================================================================
 
-## How to set up the catkin workspace and VS code
+**Install usb_cam ROS Package**
 
-1. Regularly need to ensure your system is up-to-date and has the necessary packages for ROS:
-
-```bash
-sudo apt update
-```
+1. The usb_cam package is commonly used in ROS to interface with USB cameras or webcams.
 
 ```bash
-sudo apt upgrade
+sudo apt install ros-noetic-usb-cam
 ```
 
-2. Open the first terminal, instead of sourcing the below ROS path every time:
+**To view the camera feed in ROS, you can use rqt_image_view:**
+
+2. Install the necessary tools:
 
 ```bash
-source /opt/ros/noetic/setup.bash
+sudo apt install ros-noetic-rqt-image-view
 ```
 
-It's better to make automate by sourcing to ~/.bashrc one time:
+3. Run the image viewer:
 
 ```bash
-echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+rqt_image_view
 ```
 
-```bash
-source ~/.bashrc
-```
-
-3. Install the essential dependencies one time:
-
-```bash
-sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-```
-
-4. After all the above steps, try to run the below command to see if the ROS works correctly or not:
-
-```bash
-roscore
-```
-
-Note: Please do not close this terminal as long as you working on the ROS platform.
-
-5. Open the second terminal, create and initialize the catkin workspace:
-
-```bash
-mkdir -p ~/catkin_ws/src
-```
-
-```bash
-cd ~/catkin_ws
-```
-
-```bash
-catkin init
-```
-
-6. Clone GitHub repository:
-
-Go to the src folder:
-
-```bash
-cd ~/catkin_ws/src
-```
-
-Clone the repository:
-
-```bash
-git clone https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git
-```
-
-7. Build the workspace
-
-Go to catkin_ws, run catkin_make:
-
-```bash
-cd ~/catkin_ws
-```
-
-```bash
-catkin_make
-```
-
-8. Open the third terminal, install vs code:
-
-```bash
-sudo snap install code --classic
-```
-
-9. To open the VS code editor from the command line just run:
-
-```bash
-code .
-```
-
-10. After opening the VS code editor, try to open your cloned repository folder by browsing it
-
-Now try to work in VS code for your programming life is easy.
-
-
+In the viewer, select the topic /usb_cam/image_raw to see the camera feed.
 
 ## If you encounter any dependency issues, refer to the steps mentioned below to resolve unmet dependencies.
 
@@ -489,6 +388,103 @@ Save the launch file and try again:
 roslaunch usb_cam_stream_publisher.launch
 ```
 
+## How to set up the catkin workspace and VS code
+
+1. Regularly need to ensure your system is up-to-date and has the necessary packages for ROS:
+
+```bash
+sudo apt update
+```
+
+```bash
+sudo apt upgrade
+```
+
+2. Open the first terminal, instead of sourcing the below ROS path every time:
+
+```bash
+source /opt/ros/noetic/setup.bash
+```
+
+It's better to make automate by sourcing to ~/.bashrc one time:
+
+```bash
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+```
+
+```bash
+source ~/.bashrc
+```
+
+3. Install the essential dependencies one time:
+
+```bash
+sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+```
+
+4. After all the above steps, try to run the below command to see if the ROS works correctly or not:
+
+```bash
+roscore
+```
+
+Note: Please do not close this terminal as long as you working on the ROS platform.
+
+5. Open the second terminal, create and initialize the catkin workspace:
+
+```bash
+mkdir -p ~/catkin_ws/src
+```
+
+```bash
+cd ~/catkin_ws
+```
+
+```bash
+catkin init
+```
+
+6. Clone GitHub repository:
+
+Go to the src folder:
+
+```bash
+cd ~/catkin_ws/src
+```
+
+Clone the repository:
+
+```bash
+git clone https://github.com/narsimlukemsaram/COMP0182-Multi-Agent-Systems.git
+```
+
+7. Build the workspace
+
+Go to catkin_ws, run catkin_make:
+
+```bash
+cd ~/catkin_ws
+```
+
+```bash
+catkin_make
+```
+
+8. Open the third terminal, install vs code:
+
+```bash
+sudo snap install code --classic
+```
+
+9. To open the VS code editor from the command line just run:
+
+```bash
+code .
+```
+
+10. After opening the VS code editor, try to open your cloned repository folder by browsing it
+
+Now try to work in VS code for your programming life is easy.
 
 ## To-Do List
 
