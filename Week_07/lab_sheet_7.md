@@ -63,7 +63,7 @@ roslaunch yolov8_ros yolo_v8.launch
 
 Output like this:
 
-![image.png](imgs/map.png)
+![image.png](imgs/image.png)
 
 ==============================================================================
 
