@@ -61,6 +61,10 @@ Launch yolo_v8.launch file, all you should have to do is change the image topic 
 roslaunch yolov8_ros yolo_v8.launch
 ```
 
+Output like this:
+
+![image.png](imgs/map.png)
+
 ==============================================================================
 
 ## Troubleshoot / Suggestions
