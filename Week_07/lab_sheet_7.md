@@ -2,26 +2,29 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Task 1: Single-Robot Auto Navigation towards one destination marked by one ArUco Marker
+## Task 1: Single-robot auto navigation toward one destination marked by one ArUco Marker
 
-Again, target is to finish running single-robot (real TurtleBot3) auto navigation towards one destination marked by one ArUco marker from previous lab session. 
+Again, the target is to finish running single-robot (real TurtleBot3) auto navigation toward one destination marked by one ArUco marker from the previous lab session. 
 
-All students should have camera calibrated and able to detect single ArUco marker. 
+All students should have a camera calibrated and be able to detect a single ArUco marker. 
 
-If not, please do it and make sure you are able to run the auto navigation script with one ArUco marker. One marker on the TurtleBot3, the other serves as the destination.
+If not, please do it and make sure you can run the auto navigation script with one ArUco marker. One marker is on the TurtleBot3, and the other is the destination.
 
-Once you finish this task, you will be able to move your robot autonomously to the destination ArUco marker.
+Once you finish this task, you can move your robot autonomously to the destination ArUco marker.
 
+Output like this:
 
-## Task 2: Single-Robot Auto Navigation towards two destinations marked by two ArUco Markers
+![image.png](imgs/SingleArucoMarker.png)
 
-To be filled.
+## Task 2: Single-robot auto navigation toward two destinations marked by two ArUco Markers
 
-## Task 3 (Optional): Install and Run YOLOv8 Object Detection using USB Camera with ROS Noetic on Ubuntu 20.04
+It's a lab exercise. After finishing Task 1, try to adapt it for this task.
+
+## Task 3 (Optional): Install and run YOLOv8 object detection using a USB camera with ROS Noetic on Ubuntu 20.04
 
 First, you connect the Logitech C920 HD Pro camera to **Remote PC** (or your laptop). 
 
-This task provides how to install and run YOLOv8 object detection algorithm using USB camera based on PyTorch-YOLOv8. 
+This task provides instructions for installing and running the YOLOv8 object detection algorithm using a USB camera based on PyTorch-YOLOv8. 
 
 **Development Environment**:
 
@@ -63,7 +66,7 @@ roslaunch yolov8_ros yolo_v8.launch
 
 Output like this:
 
-![image.png](imgs/image.png)
+![image.png](imgs/YOLOObjectDetection.png)
 
 ==============================================================================
 
