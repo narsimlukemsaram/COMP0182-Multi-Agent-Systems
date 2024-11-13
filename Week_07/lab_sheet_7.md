@@ -49,7 +49,7 @@ pip install rospkg
 ```bash
 cd /your/catkin_ws/src
 
-git clone https://github.com/narsimlukemsaram/yolov8_ros.git
+git clone https://github.com/narsimlukemsaram/yolov8_ros_usb_camera.git
 
 cd ..
 
