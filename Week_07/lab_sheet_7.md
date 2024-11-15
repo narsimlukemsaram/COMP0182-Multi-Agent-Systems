@@ -12,13 +12,57 @@ If not, please do it and make sure you can run the auto navigation script with o
 
 Once you finish this task, you can move your robot autonomously to the destination ArUco marker.
 
+1. First, plug the camera into the USB port.
+
+Open a terminal and list all cameras plugged in and detected by the system:
+
+```
+ls /dev/video*
+```
+
+Plug and unplug the Logitech C920 HD Pro camera and identify the correct /dev/video*.
+
+In my case, the camera was mounted on path /dev/video2.
+
+2. Open terminal, run roscore.
+
+3. roslaunch auto_aruco_marker_finder multiple_aruco_marker_finder.launch
+
+5. rosrun rqt_gui rqt_gui
+
+Select /id100/aruco_single/result
+
+6. Go to <catkin_ws>/COMP0182-Multi-Agent-Systems/turtlebot3_burger_auto_navigation/auto_navigation/scripts
+
+   rosrun auto_navigation goal_pose.py
+
+Connect through ssh:
+Run on your turtlebot3
+**ubuntu@ubuntu2004:~$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+
 Output like this:
 
 ![image.png](imgs/SingleArucoMarker.png)
 
 ## Task 2: Single-robot auto navigation toward two destinations marked by two ArUco Markers
 
-It's a lab exercise. After finishing Task 1, try to adapt it for this task.
+1. First, plug the camera into the USB port.
+
+Open a terminal and list all cameras plugged in and detected by the system:
+
+```
+ls /dev/video*
+```
+
+Plug and unplug the Logitech C920 HD Pro camera and identify the correct /dev/video*.
+
+In my case, the camera was mounted on path /dev/video2.
+
+2. Open terminal, run roscore.
+
+3. run roslaunch auto_aruco_marker_finder multiple_aruco_marker_finder.launch
+
+4. rosrun rqt_gui rqt_gui
 
 ## Task 3 (Optional): Install and run YOLOv8 object detection using a USB camera with ROS Noetic on Ubuntu 20.04
 
