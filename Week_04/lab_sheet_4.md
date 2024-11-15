@@ -22,7 +22,21 @@ Please keep this terminal open.
 sudo apt-get install ros-noetic-usb-cam uvcdynctrl
 ```
 
-3. Now, check if your camera autofocus status:
+3. Identify the camera:
+
+First, plug the camera into the USB port.
+
+Open a terminal and list all cameras plugged in and detected by the system:
+
+```
+ls /dev/video*
+```
+
+Plug and unplug the Logitech C920 HD Pro camera and identify the correct /dev/video*.
+
+In my case, the camera was mounted on path /dev/video2.
+
+4. Now, check if your camera autofocus status:
 
 ```bash
 uvcdynctrl --device=/dev/video2 --clist
@@ -47,7 +61,7 @@ Listing available controls for device /dev/video2:
   Zoom, Absolute
 ```
 
-4. If it is enabled, you can turn off the autofocus:
+5. If it is enabled, you can turn off the autofocus:
 
 ```bash
 uvcdynctrl --device=/dev/video2 --set='Focus, Auto' 0
@@ -59,19 +73,21 @@ check if the autofocus is off or not:
 uvcdynctrl --device=/dev/video2 --get='Focus, Auto'
 ```
 
-5. Now, install camera calibration:
+It should return 0.
+
+6. Now, install camera calibration:
 
 ```bash
 rosdep install camera_calibration
 ```
 
-6. Publish the data from your camera, for example, via using usb_cam:
+7. Publish the data from your camera, for example, via using usb_cam:
 
 ```bash
 rosrun usb_cam usb_cam_node
 ```
 
-7. In the third terminal, run rostopic list:
+8. In the third terminal, run rostopic list:
 
 ```bash
 rostopic list
@@ -91,7 +107,7 @@ rostopic list
 /usb_cam/image_raw/theora/parameter_updates
 ```
 
-8. Open the fourth terminal, and connect camera_calibration to the node publishing camera images:
+9. Open the fourth terminal, and connect camera_calibration to the node publishing camera images:
    (node and topic name should be adjusted: image:=/usb_cam/image_raw
                                             camera:=/usb_cam) and a checkerboard with
                                             0.02517-meter squares:
@@ -100,11 +116,11 @@ rostopic list
 rosrun camera_calibration cameracalibrator.py --size 9x6 --square 0.02517 image:=/usb_cam/image_raw camera:=/usb_cam --no-service-check
 ```
 
-9. After getting enough images click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
+10. After getting enough images, click on the calibrate and then save. If you click on the commit button it will copy calibration data into:
 
 /home/[username]/.ros/camera_info/head_camera.yaml
  
-10. Fix the calibration URL. Put the YAML file in the
+11. Fix the calibration URL. Put the YAML file in the
 
 /home/[username]/.ros/camera_info/head_camera.yaml
 
