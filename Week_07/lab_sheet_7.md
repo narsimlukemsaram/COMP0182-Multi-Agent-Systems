@@ -8,11 +8,11 @@ Again, the target is to finish running single-robot (real TurtleBot3) auto navig
 
 All students should have a camera calibrated and be able to detect a single ArUco marker. 
 
-If not, please do it and make sure you can run the auto navigation script with one ArUco marker. One marker is on the TurtleBot3, and the other is the destination.
+If not, please do it and ensure you can run the auto navigation script with one ArUco marker. One marker is on the TurtleBot3, and the other is the destination.
 
-Once you finish this task, you can move your robot autonomously to the destination ArUco marker.
+Once you finish this, you can move your robot autonomously to the destination ArUco marker. Here are steps:
 
-1. First, plug the camera into the USB port.
+1. First, Plug and unplug the Logitech C920 HD Pro camera into the USB port and identify the correct /dev/video*.
 
 Open a terminal and list all cameras plugged in and detected by the system:
 
@@ -20,29 +20,55 @@ Open a terminal and list all cameras plugged in and detected by the system:
 ls /dev/video*
 ```
 
-Plug and unplug the Logitech C920 HD Pro camera and identify the correct /dev/video*.
+In my case, the camera was mounted on path /dev/video**2**.
 
-In my case, the camera was mounted on path /dev/video2.
+2. Open the first terminal and run the roscore.
 
-2. Open terminal, run roscore.
+```
+roscore
+```
 
-3. roslaunch auto_aruco_marker_finder multiple_aruco_marker_finder.launch
+Keep this terminal open and let it run the roscore (master).
 
-5. rosrun rqt_gui rqt_gui
+Ensure the ArUco marker 100 is attached on top of your TyrtleBot3 (with correct orientation) and ArUco marker 101 is a bit far away from your TurtleBot3 on the floor. 
 
-Select /id100/aruco_single/result
+3. Open the second terminal, launch multiple ArUco marker finder:
 
-6. Go to <catkin_ws>/COMP0182-Multi-Agent-Systems/turtlebot3_burger_auto_navigation/auto_navigation/scripts
+```
+   roslaunch auto_aruco_marker_finder multiple_aruco_marker_finder.launch
+```
 
-   rosrun auto_navigation goal_pose.py
+Update the correct USB port for your camera in <catkin_ws>/COMP0182-Multi-Agent-Systems/turtlebot3_burger_auto_navigation/auto_aruco_marker_finder/launch/multiple_aruco_marker_finder.launch. In my case, the camera was mounted on path /dev/video**2**. 
 
-Connect through ssh:
-Run on your turtlebot3
-**ubuntu@ubuntu2004:~$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+4. Open the third terminal and run the rqt gui for visualizing the detections:
+
+```
+   rosrun rqt_gui rqt_gui
+```
+
+In rqt GUI, select /id100/aruco_single/result, /id101/aruco_single/result, etc.
+
+If the ArUco markers (100 and 101) are not visible, keep them in the field of view of the camera).
 
 Output like this:
 
 ![image.png](imgs/SingleArucoMarker.png)
+
+5. Open the fourth terminal, and connect to your TurtleBot3 using ssh:
+   
+On your turtlebot3, run bringup:
+
+```
+**ubuntu@ubuntu2004:~$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+```
+
+5. Open the fifth terminal and run the auto navigation script (goal_pose.py):
+
+```
+   rosrun auto_navigation goal_pose.py
+```
+
+The TurtleBot3 (ArUco marker 100) goes to the destination (ArUco marker 101).
 
 ## Task 2: Single-robot auto navigation toward two destinations marked by two ArUco Markers
 
@@ -58,7 +84,7 @@ Plug and unplug the Logitech C920 HD Pro camera and identify the correct /dev/vi
 
 In my case, the camera was mounted on path /dev/video2.
 
-2. Open terminal, run roscore.
+2. Open the terminal and run roscore.
 
 3. run roslaunch auto_aruco_marker_finder multiple_aruco_marker_finder.launch
 
