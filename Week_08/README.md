@@ -124,8 +124,6 @@ When using a custom `turtlebot_name` and including it in topic names (e.g., `/tb
 
 #### Launching TurtleBot Bringup with Namespace
 
----
-
 Use the following command to launch the TurtleBot bringup with a specific namespace:
 
 ```bash
@@ -141,13 +139,9 @@ Explanation:
 
 #### Adjusting Launch Files
 
----
-
 If you prefer to modify the launch files (`turtlebot3_bringup/launch/turtlebot3_robot.launch`) directly, set the arguments accordingly.
 
 #### Consistency with the Python Script
-
----
 
 Ensure that the `turtlebot_name` used in your Python script matches the namespace set when launching the TurtleBot bringup.
 
