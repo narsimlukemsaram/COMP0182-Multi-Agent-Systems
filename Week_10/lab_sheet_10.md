@@ -1,25 +1,60 @@
 # COMP0182 (Multi-Agent Systems): Lab Sheet 10
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Final Student Challenge: Fetch and Delivery with Two TurtleBots
 
-## Final Student Challenge
+In this final challenge, the focus is on implementing a **fetch and delivery task** using two TurtleBots in a real-world arena with obstacles (walls). The goal is to plan collision-free trajectories for the TurtleBots to complete the task efficiently. 
 
-Fetch and delivery in the real-world arena with two TurtleBots.
+### Objective
+- **Minimize delivery time** while ensuring the following:
+  - Both TurtleBots visit the fetch points (FPs) and reach their respective goal positions.
+  - Avoid collisions with walls or between the TurtleBots.
 
-In this final challenge task, we focus on fetch and delivery with two TurtleBots with obstacles (walls) in the real-world arena. The task is to plan collision-free trajectories of the TurtleBots with fetch points. Both TurtleBots have predefined start and fetch positions. The objective of the task is to minimize the delivery time while touching the fetching points and not colliding the TurtleBots with the walls or each other. An already working solution has been provided as a part of the assignment in the last week. However, this example solution has poor performance and can be improved significantly.
+An example solution has been provided in the last week's assignment. However, it has **poor performance** and can be significantly improved.
 
-# Task Overview
+---
 
-You are given two TurtleBots required to inspect fetch points (FPs) as fast as possible in an arena environment with obstacles. Your task is to start your TurtleBots from the start, touch the FPs, and reach goal positions while keeping a safe distance from the obstacles and between the two TurtleBots. 
+## Task Overview
 
-You have two run attempts. If you TurtleBot touches the walls, then it is a 10-second penalty. If you touch the TurtleBots while running the mission, then it is a 20-second penalty. The overall objective is to minimize the fetch and delivery time of both TurtleBots.
+### Setup
+- **Environment**: Fixed maze structure with predefined starting (`start1`, `start2`) and goal positions (`goal1`, `goal2`) for the TurtleBots.
+- **TurtleBots**: Two robots navigating simultaneously in the arena with obstacles.
 
-The trajectories are required to begin and end at predefined starting locations. The mission starts when the trajectory following starts and ends once the TurtleBots stop at their goal positions.
+### Task Steps
+1. **Initial Requirements**:
+   - Both TurtleBots must begin at their respective starting positions.
+   - They must navigate to touch the fetch points (FPs) and then move to their goal positions.
 
-It will be defined as a fixed maze structure with the corresponding start1/start2 and goal1/goal2 positions for the robots in the maze. 
+2. **Penalties**:
+   - **Collision with walls**: Adds a **10-second penalty** for each instance.
+   - **Collision between TurtleBots**: Adds a **20-second penalty** for each instance.
 
-Students must implement the solution in PyBullet simulation and show us before going to real-challenge. 
+3. **Attempts**:
+   - Each student has **two attempts** to complete the task.
+   - If both attempts are successful, the **best performance** will be used as the final result (not the average).
 
-Next, the students must run the multi-agent auto navigation in a PyBullet simulation using two TurtleBots with CBS/PBS/RRT* (or a student innovative algorithm) and save the resulting navigation trajectory to a file.
+4. **Mission Start and End**:
+   - The mission starts when the TurtleBots begin their trajectory.
+   - It ends when both TurtleBots stop at their respective goal positions.
 
-Run the same multi-agent navigation of the two robots simultaneously using the waypoints based on the saved trajectory file in the real-world arena.
+---
+
+### Implementation
+1. **Simulated Environment**:
+   - Students must first implement their solution in **PyBullet simulation** and demonstrate it before attempting the real-world challenge.
+   - Use **CBS, PBS, RRT***, or a **student-designed algorithm** for multi-agent navigation.
+   - Save the resulting navigation trajectory to a file.
+
+2. **Real-World Challenge**:
+   - Replay the saved trajectory file in the real-world arena.
+   - The TurtleBots will use waypoint-based navigation derived from the simulation.
+
+---
+
+## Key Points to Remember
+- **Collision-free navigation** is critical.
+- Efficient trajectories will minimize fetch and delivery time.
+- The best result out of the two attempts will be considered as the final performance.
+
+---
+
+Good luck with the challenge! 🚀
