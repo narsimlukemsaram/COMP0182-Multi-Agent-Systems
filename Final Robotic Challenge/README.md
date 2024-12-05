@@ -53,7 +53,7 @@ Example Map and Solution:
 
 [![examplemap.jpeg](imgs/examplemap.jpeg)]
 
-[![examplesolution.mp4](imgs/examplesolution.mp4)]
+[![examplesolution.jpeg](imgs/examplesolution.mp4)]
 
 ---
 
