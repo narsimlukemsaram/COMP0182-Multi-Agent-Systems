@@ -51,9 +51,9 @@ Robotic Challenge Start Time: 13:00 hrs
 
 Example Map and Solution:
 
-[![examplemap](imgs/examplemap.jpeg)]
+![examplemap](imgs/examplemap.jpeg)
 
-[![examplesolution](imgs/examplesolution.mp4)]
+![examplesolution](imgs/examplesolution.mp4)
 
 ---
 
